@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>share-layout</title>
+    <link href="./profile.css" rel="stylesheet"
+</head>
+<body>
+    <div class="layout-container">
+        <div class="layout-header-container">
+            <h1 class="header-title">プロフィール</h1>
+        </div>
+        <div class="layout-sidebar-container">
+            <div class="block-sidebar-icon">
+                <img class="side-bar-rogo" src="./key_icon.png">
+                <dev class="side-bar-middle-buttons">
+                    <img class="sidebar-icon-profile" src="./user_icon.png">
+                    <img class="sidebar-icon-search" src="./search_icon.png">
+                    <img class="sidebar-icon-plus" src="./plus_icon.png">
+                </dev>
+                <img class="sidebar-icon-rogout" src="./rogout_icon.png">
+            </div>
+        </div>
+        <div class="layout-contents-container">
+            <div class="block-contents-profile">
+                <div class="contents-profile-username">
+                    <div class="contents-profile-label-username profile-label">ユーザー名</div>
+                    <div class="contents-profile-text-username profile-text">{{user.user_name}}</div>
+                </div>
+                <div class="contents-profile-email">
+                    <div class="contents-profile-label-email profile-label">メールアドレス</div>
+                    <div class="contents-profile-text-email profile-text">{{user.email}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

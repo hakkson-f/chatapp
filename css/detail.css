@@ -1,0 +1,147 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.display{
+    display: flex;      
+}
+
+ul{
+    list-style:none
+}
+
+li{
+    line-height: 30px;
+}
+
+.sidebar a{
+    text-decoration: none;
+}
+
+input{
+    font-size: larger;
+    width: 20vw;
+    height: 4vh;
+}
+
+
+/*  */
+.sidebar{
+    width: 56px;
+    height: 100vh;
+    position: sticky;
+    left: 0;
+    top: 0;
+    background-color: gray;
+    text-align: center;
+}
+
+.side-lists{
+    font-size: x-small;
+}
+
+/*  */
+.secondbar{
+    width: 16%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 40px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    background-color: gray;
+    text-align: center;
+}
+
+/*  */
+.main{
+    width: 90%;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    width: 90%;
+    height: 40px;
+    padding: 16px 0 0 10%;
+    background-color: skyblue;
+    font-size: large;
+
+}
+
+
+
+.search-messages{
+    width: 60%;
+    margin: 0 16px 8px auto;
+}
+
+
+
+.messages {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.user-name {
+    font-size: 8px;
+    color: grey;
+    margin: 1px 0;
+}
+
+.message-created_at {
+    font-size: 8px;
+    color: grey;
+    margin: 1px 0;
+}
+
+  
+.my-messages {
+    margin: 0 0 0 auto;
+}
+
+
+.box-left {
+    background-color: rgba(18, 37, 67, 0.2);
+    color: var(--navy_blue);
+    width: 40vw;
+}
+  
+.box-right {
+    background-color: rgba(18, 37, 67, 0.4);
+    color: var(--snow);
+    width: 40vw;
+}
+
+
+#no-message {
+    padding-top: 54px;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+#no-message p {
+    display: inline;
+}
+
+textarea{
+    width: 80%;
+    margin: 0 2% 0 10%;
+}
+
+.message-box{
+    display: flex;
+    margin-left: 20px;
+}
+
+.message-send{
+    display: flex;
+}
+
+
+

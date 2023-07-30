@@ -1,0 +1,116 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.layout-container {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 0.5fr 0.5fr 4fr 1fr;
+    grid-template-rows: 0.6fr 0.4fr 3fr 1fr;
+    background-color: #CFE8FF;
+}
+
+.layout-header-container {
+    grid-column: 2 / 5;
+    grid-row: 1;
+    background-color: #7895CB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-title {
+    font-size: 41.2px;
+    margin-left: 32px;
+    color: white;
+}
+
+.layout-sidebar-container {
+    grid-column: 1;
+    grid-row: 1 / 5;
+    background-color: #4A55A2;
+    position: relative;
+}
+
+.block-sidebar-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 94%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.block-sidebar-icon > img {
+    width: 100%;
+}
+
+.side-bar-middle-buttons {
+    width: 100%;
+    height: 70%;
+}
+
+.side-bar-middle-buttons > img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.layout-contents-container{
+    grid-column : 3;
+    grid-row :3;
+    background-color: #7895CB;
+    position: relative;
+}
+
+.contents-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52%;
+    height: 66%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contents-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60%;
+    width: 100%;
+}
+
+.contents-input > input {
+    background-color: #4A55A2;
+    border-color: #4A55A2;
+}
+.contents-input > input::placeholder {
+    color: white;
+    font-size: 20.2px;
+}
+
+.contents-input-group-name {
+    height: 24%;
+}
+
+.contents-input-group-description {
+    height: 37%;
+}
+
+.contents-input-decision {
+    width: 50%;
+    height: 11.5%;
+    background-color: #CFE8FF;
+    border-color: #CFE8FF;
+    border-radius: 5px;
+    color: #4A55A2;
+    font-size: 23px;
+}

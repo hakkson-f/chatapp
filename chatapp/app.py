@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, session, redirect, flash
+from datetime import timedelta
 from models import dbConnect
 from user import User
 import hashlib
@@ -6,6 +7,8 @@ import uuid
 import re
 
 app = Flask(__name__)
+app.secret_key = uuid.uuid4().hex
+app.permanent_session_lifetime = timedelta(days=30)
 
 #チャンネル一覧の表示
 @app.route('/')

@@ -32,6 +32,37 @@ class dbConnect:
             cur.close()
 
 
+#ユーザー情報の取得（名前から）
+    def getUserFromName(name):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM users WHERE user_name=%s;"
+            cur.execute(sql, (name))
+            user = cur.fetchone()
+            return user 
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close()
+
+
+#ユーザー名の取得
+    def getUsername(uid):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT user_name FROM users WHERE uid=%s;"
+            cur.execute(sql, (uid))
+            user = cur.fetchone()
+            return user 
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close()
+
 
       # チャンネル一覧を取得
     def getChannelAll():

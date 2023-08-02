@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>login</title>
     <!-- <link rel="icon" href="" /> ファビコンの設定 -->
-    <link href="./css/rogin.css" rel="stylesheet" tipe=""text/css>
+    <link href="../static/css/login.css" rel="stylesheet" tipe=""text/css>
     <!-- フォントの設定
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
       <div class="lyout-contents-container">
         <form class="registration-form" method="post">
           <div class="registration-input">
-            <input class="regustration-input-username"
+            <input class="registration-input-username"
               type="text"
               placeholder="ユーザー名"
               name="username"
@@ -28,12 +28,13 @@
               id="password-input"
             />
           </div>
-          <a class="switch-passward-change" href="{{url_for('passward_change')}}">
+          <a class="switch-passward-change" >  
             パスワードをお忘れですか？
           </a>
           <div class="regustration-button">
-            <button class="registration-button-rogin">ログイン</button>
-            <button class="regustration-button-singup">新規登録</button>        
+            <a class="registration-button-rogin" href="{{ url_for('index') }}">ログイン</a>
+            <a class="regustration-button-singup" href="{{ url_for('signup') }}">新規登録</a>
+                        
           </div>
         </form>
       </div>

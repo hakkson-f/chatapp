@@ -25,7 +25,19 @@
                     <p><input type="password" style="width:250px;height: 50px;" name="pasword1" placeholder="パスワード"></p>
                     <p>パスワード(再入力):</p>
                     <p><input type="password" style="width:250px;height: 50px;" name="pasword2" placeholder="確認用パスワード"></p>
+                    
+                  　{% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                  
                     <input type="submit" style="width:150px;height: 50px;" value="登録する">
+                    <a href="{{ url_for('login') }}">ログインに戻る</a>
                 </form>
             </div>    
         </div>

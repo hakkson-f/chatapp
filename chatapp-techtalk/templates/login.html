@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>login</title>
+    <!-- <link rel="icon" href="" /> ファビコンの設定 -->
+    <link href="../static/css/login.css" rel="stylesheet" tipe=""text/css>
+    <!-- フォントの設定
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;900&family=M+PLUS+1:wght@200&display=swap" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div class="lyout-container">
+      <div class="lyout-contents-container">
+        <form class="registration-form" method="post">
+          <div class="registration-input">
+            <input class="registration-input-username"
+              type="text"
+              placeholder="ユーザー名"
+              name="username"
+              id="username-input"
+            />
+            <input class="regustration-input-passward"
+              type="password"
+              placeholder="パスワード"
+              name="password"
+              id="password-input"
+            />
+          </div>
+          {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  <ul>
+                  {% for message in messages %}
+                      <li>{{ message }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+          {% endwith %}
+
+          <a class="switch-passward-change" >  
+            パスワードをお忘れですか？
+          </a>
+          <div class="regustration-button">
+            <button class="registration-button-rogin">ログイン</button>
+            <a class="regustration-button-singup" href="{{ url_for('signup') }}">新規登録</a>
+                        
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

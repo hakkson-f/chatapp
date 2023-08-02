@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>share-layout</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <!-- <link href="./css/detail-layout.css" rel="stylesheet" -->
+</head>
+<body>
+    <div class="layout-container">
+        <div class="layout-header-container">
+            チャンネル名一覧
+        </div>
+        <div class="layout-sidebar-container">
+            <ul class="side-lists" >
+                <li class="side-list" >
+                    <a href="" style="color: aliceblue;">
+                        <p>icon1</p>
+                        <p>アイコン１</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" style="color: aliceblue;">
+                        <p>icon3</p>
+                        <p>アイコン2</p>
+                    </a>
+                </li>
+                <li>
+                    <a href=""style="color: aliceblue;">
+                        <p>icon3</p>
+                        <p>アイコン3</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="user-name-label">
+            {{ username }} さん、ようこそ
+        </div>
+
+        <div class="layout-contents-container">
+            <div class="channels-container">
+                <div class="add-channels-box">
+                    <div class="add-channels">
+                        <a href="" style="font-size: medium;"><b>チャンネル新規追加⊕</b></b>
+                        </a>
+                    </div>
+                </div>
+                <div class="search-channels">
+                    <label for="search-channels"><b>チャンネル検索</b></label>
+                    <input type="text" id="search-channels" autofocus>
+                    <button type="button" style="font-size: medium;">検索</button>
+                </div>
+                <div class="channels-box">
+                    <ul class="channnel-list">
+                        {% for channel in channels %}
+                        
+                            <li>{{ channel.name }}</li>
+                        
+                        {% endfor %}
+                        <li>
+                            <a href="/detail/${channel.id}"">チャンネル００１</a>
+                        </li>
+                        <li>
+                            <a href="/detail/${channel.id}"">チャンネル００２</a>
+                        </li>
+                        <li>
+                            <a href="/detail/${channel.id}"">チャンネル００３</a>
+                        </li>
+                        <li>
+                            <a href="/detail/${channel.id}"">チャンネル００２</a>
+                        </li>
+                        <li>
+                            <a href="/detail/${channel.id}"">チャンネル００３</a>
+                        </li>
+                        <li>
+                            <a href="/detail/${channel.id}"">チャンネル００２</a>
+                        </li>
+                        <li>
+                            <a href="/detail/${channel.id}"">チャンネル００３</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

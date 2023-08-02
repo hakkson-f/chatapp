@@ -8,22 +8,25 @@
 </head>
 <body>
     <div class="layout-container">
-        <div class="layout-header-container"></div>
+        <div class="layout-header-container">
+            <header>
+                <h1 style="font-size: 90px;">新規登録</h1>
+            </header>
+        </div>
         <div class="layout-sidebar-container"></div>
         <div class="layout-contents-container">
             <div class="block-contents-container">
-                <h1>新規登録</h1>
-                <form method="post" action="">
+                <form method="post" action="#">
                     <p>名前:</p>
-                    <p><input type="text" name="username" placeholder="名前"></p>
+                    <p><input type="text" style="width:250px;height: 50px;" name="nickname" placeholder="名前"></p>
                     <p>メールアドレス:</p>
-                    <p><input type="text" name="email"></p>
+                    <p><input type="text" style="width:250px;height: 50px;" name="e-mail" placeholder="メールアドレス"></p>
                     <p>パスワード:</p>
-                    <p><input type="password" name="password1"></p>
+                    <p><input type="password" style="width:250px;height: 50px;" name="pasword1" placeholder="パスワード"></p>
                     <p>パスワード(再入力):</p>
-                    <p><input type="password" name="password2"></p>
-
-                    {% with messages = get_flashed_messages() %}
+                    <p><input type="password" style="width:250px;height: 50px;" name="pasword2" placeholder="確認用パスワード"></p>
+                    
+                  　{% with messages = get_flashed_messages() %}
                         {% if messages %}
                             <ul>
                             {% for message in messages %}
@@ -32,9 +35,8 @@
                             </ul>
                         {% endif %}
                     {% endwith %}
-
-                    <!-- <a class=" " href="{{ url_for('userSignup') }}">登録する</a> -->
-                    <input type="submit" value="登録する">
+                  
+                    <input type="submit" style="width:150px;height: 50px;" value="登録する">
                     <a href="{{ url_for('login') }}">ログインに戻る</a>
                 </form>
             </div>    

@@ -13,7 +13,7 @@
         <div class="layout-contents-container">
             <div class="block-contents-container">
                 <h1>新規登録</h1>
-                <form method="post" action="#">
+                <form method="post" action="">
                     <p>名前:</p>
                     <p><input type="text" name="nickname" placeholder="名前"></p>
                     <p>メールアドレス:</p>
@@ -22,6 +22,16 @@
                     <p><input type="password" name="pasword1"></p>
                     <p>パスワード(再入力):</p>
                     <p><input type="password" name="pasword2"></p>
+
+                    {% with messages = get_flashed_messages() %} {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %} {% endwith %}
+
+                    <!-- <a class=" " href="{{ url_for('userSignup') }}">登録する</a> -->
                     <input type="submit" value="登録する">
                 </form>
             </div>    

@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, session, redirect, flash
+from flask import Flask, request, render_template, session, redirect, flash,abort
 from datetime import timedelta
 from models import dbConnect
 from user import User
@@ -57,10 +57,10 @@ def userSignup():
             flash('既に登録されています')
         else:
             dbConnect.createUser(user)
-            UserTd = str(uid)
+            UserId = str(uid)
             session['uid'] = UserId
             return redirect('/')
-    return redirect('/signup')
+    return redirect('/login')
 
 #チャンネル詳細ページの表示
 @app.route('/detail')
@@ -74,4 +74,4 @@ def test():
 
 ## おまじない
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0",debug=True)

@@ -19,12 +19,36 @@ def index():
     else:
         channels = dbConnect.getChannelAll()
         channels.reverse()
-    return render_template('index.html', channels=channels)
+        username = dbConnect.getUsername(uid)["user_name"]
+    return render_template('index.html', channels=channels ,username=username)
 
 #ログインページの表示
 @app.route('/login')
 def login():
     return render_template('/login.html')
+
+
+# ログイン処理
+@app.route('/login', methods=['POST'])
+def userLogin():
+    name = request.form.get('username')
+    password = request.form.get('password')
+
+    if name =='' or password == '':
+        flash('空のフォームがあるようです')
+    else:
+        user = dbConnect.getUserFromName(name)
+        if user is None:
+            flash('このユーザーは存在しません')
+        else:
+            hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
+            if hashPassword != user["password"]:
+                flash('パスワードが間違っています！')
+            else:
+                session['uid'] = user["uid"]
+                return redirect('/')
+    return redirect('/login')
+
 
 #サインアップページの表示
 @app.route('/signup')
@@ -34,7 +58,7 @@ def signup():
 #サインアップ処理
 @app.route('/signup', methods=['POST'])
 def userSignup():
-    name = request.form.get('name')
+    name = request.form.get('username')
     email = request.form.get('email')
     password1 = request.form.get('password1')
     password2 = request.form.get('password2')
@@ -60,7 +84,7 @@ def userSignup():
             UserId = str(uid)
             session['uid'] = UserId
             return redirect('/')
-    return redirect('/login')
+    return redirect('/signup')
 
 #チャンネル詳細ページの表示
 @app.route('/detail')

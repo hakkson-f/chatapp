@@ -28,11 +28,21 @@
               id="password-input"
             />
           </div>
+          {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  <ul>
+                  {% for message in messages %}
+                      <li>{{ message }}</li>
+                  {% endfor %}
+                  </ul>
+              {% endif %}
+          {% endwith %}
+
           <a class="switch-passward-change" >  
             パスワードをお忘れですか？
           </a>
           <div class="regustration-button">
-            <a class="registration-button-rogin" href="{{ url_for('index') }}">ログイン</a>
+            <button class="registration-button-rogin">ログイン</button>
             <a class="regustration-button-singup" href="{{ url_for('signup') }}">新規登録</a>
                         
           </div>

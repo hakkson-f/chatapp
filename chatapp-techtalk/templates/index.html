@@ -35,7 +35,7 @@
             </ul>
         </div>
         <div class="user-name-label">
-            {{ ユーザー名 }} さん、ようこそ
+            {{ username }} さん、ようこそ
         </div>
 
         <div class="layout-contents-container">
@@ -53,6 +53,11 @@
                 </div>
                 <div class="channels-box">
                     <ul class="channnel-list">
+                        {% for channel in channels %}
+                        
+                            <li>{{ channel.name }}</li>
+                        
+                        {% endfor %}
                         <li>
                             <a href="/detail/${channel.id}"">チャンネル００１</a>
                         </li>

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>share-layout</title>
-    <link href="./css/detail-layout.css" rel="stylesheet"
+    <link href="../static/css/detail.css" rel="stylesheet">
 </head>
 <body>
     <div class="layout-container">
         <div class="layout-header-container">
-            {{チャンネル名}}
+            {{ channel.name }}}
         </div>
         <div class="layout-sidebar-container">
             <ul class="side-lists" >
@@ -36,7 +36,7 @@
         <div class="layout-secondbar-container">
             <ul class="channnel-list-second">
                 <li>
-                    <a href="/detail/${channel.id}"">
+                    <a href="/detail/${{ channel.id }}"">
                         <p class="channel-name">{{ channel.name }}</p>
                     </a>
                     {% if channel.abstract is not none %}

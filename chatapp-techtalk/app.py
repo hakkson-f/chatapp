@@ -87,18 +87,9 @@ def userSignup():
     return redirect('/signup')
 
 #チャンネル詳細ページの表示
-@app.route('/detail/<cid>')
-def detail(cid):
-    uid = session.get("uid")
-    if uid is None:
-        return redirect('/login')
-
-    cid = cid
-    channel = dbConnect.getChannelById(cid)
-    messages = dbConnect.getMessageAll(cid)
-
-    return render_template('/detail.html', messages="messages", channel="channel", uid=uid)
-
+@app.route('/detail')
+def detail():
+    return render_template('/detail.html')
 
 @app.route('/test')
 def test():

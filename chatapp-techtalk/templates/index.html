@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>share-layout</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-    <!-- <link href="./css/detail-layout.css" rel="stylesheet" -->
+    <link href="../static/css/index.css" rel="stylesheet"
 </head>
 <body>
     <div class="layout-container">
@@ -34,11 +33,11 @@
                 </li>
             </ul>
         </div>
-        <div class="user-name-label">
-            {{ username }} さん、ようこそ
-        </div>
-
+            <div class="user-name-label">
+                {{ username }} さん、ようこそ
+            </div>
         <div class="layout-contents-container">
+            
             <div class="channels-container">
                 <div class="add-channels-box">
                     <div class="add-channels">
@@ -55,30 +54,9 @@
                     <ul class="channnel-list">
                         {% for channel in channels %}
                         
-                            <li>{{ channel.name }}</li>
+                            <li><a href="/detail/{{ channel.id }}">{{ channel.name }}</a></li>
                         
                         {% endfor %}
-                        <li>
-                            <a href="/detail/${channel.id}"">チャンネル００１</a>
-                        </li>
-                        <li>
-                            <a href="/detail/${channel.id}"">チャンネル００２</a>
-                        </li>
-                        <li>
-                            <a href="/detail/${channel.id}"">チャンネル００３</a>
-                        </li>
-                        <li>
-                            <a href="/detail/${channel.id}"">チャンネル００２</a>
-                        </li>
-                        <li>
-                            <a href="/detail/${channel.id}"">チャンネル００３</a>
-                        </li>
-                        <li>
-                            <a href="/detail/${channel.id}"">チャンネル００２</a>
-                        </li>
-                        <li>
-                            <a href="/detail/${channel.id}"">チャンネル００３</a>
-                        </li>
                     </ul>
                 </div>
             </div>

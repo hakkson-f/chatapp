@@ -16,6 +16,9 @@
     grid-column: 3 / 5;
     grid-row: 1;
     background-color: #7895CB;
+    padding: 1%;
+    /* position:sticky;
+    top: 0px; */
 }
 
 .layout-sidebar-container {
@@ -37,20 +40,19 @@
 
 .layout-message-container{
     grid-column : 3 / 5 ;
-    grid-row : 4 / 5;
-    background-color: grey;
+    grid-row : 3 / 4;
+    padding-top: 2%;
+    background-color:  #7895CB;
 }
 
-
-.message-box{
-    display: flex;
-    width: auto;
-    align-items: center;
-    justify-content: center;
+.search-messages{
+    text-align: right;
+    margin-right: 10%;
 }
+
 
 #message{
-    width: 90%;
+    width: 80%;
     font-size: larger;
 }
 
@@ -73,20 +75,42 @@
 
   
 .my-messages {
-    margin: 0 0 0 auto;
+    margin: 0 5% 0 auto;
 }
 
+.messages{
+    margin-left: 2%;
+}
+
+.message-box{
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    position: relative;
+    /* width: 60%; */
+    margin: 0;
+    padding: 0.7em 0 0.4em 1em;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    white-space: pre-wrap;
+  }
 
 .box-left {
     background-color: rgba(18, 37, 67, 0.2);
     color: var(--navy_blue);
-    width: 40vw;
+    width: 60%;
 }
   
 .box-right {
     background-color: rgba(18, 37, 67, 0.4);
     color: var(--snow);
-    width: 40vw;
+    margin-left: auto;
+    width: 60%;
 }
 
 

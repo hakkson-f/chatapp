@@ -52,47 +52,47 @@
             </ul>
         </div>
         <div class="layout-contents-container">
-            <div class="main-messages flex-container">
-                <div class="search-messages-box">
-                    <div class="search-messages">
-                        <label for="search-messages">本文検索</label>
-                        <input type="text" id="search-messages">
-                        <button type="button">検索</button>
-                    </div>
-                </div>
-                <div class="messages">
-                    {% if messages|length > 0 %} {% for message in messages %} {% if
-                        message.uid == uid %}
-                        <div class="my-messages">
-                            <p class="user-name">{{ message.user_name }}</p>
-                            <p class="box box-right">{{ message.message }}</p>
-                            <!-- <form action="/delete_message" method="POST">
-                                <input type="hidden" value="{{ channel.id }}" name="cid" />
-                                <button
-                                class="delete-message-button"
-                                name="message_id"
-                                value="{{ message.id }}"
-                                >
-                                削除
-                                </button>
-                            </form> -->
-                            <p class="message-created_at">{{ message.created_at }}</p>
-                        </div>
-                        {% else %}
-                        <div class="messages">
-                            <p class="user-name">{{ message.user_name }}</p>
-                            <p class="box box-left">{{ message.message }}</p>
-                            <p class="message-created_at">{{ message.created_at }}</p>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                        {% else %}
-                        <div id="no-message">
-                            <p>メッセージ履歴がありません</p>
-                        </div>
-                        {% endif %}
-                </div>
+        
+            
+            <div class="search-messages">
+                <label for="search-messages">本文検索</label>
+                <input type="text" id="search-messages">
+                <button type="button">検索</button>
             </div>
+        
+            <div class="messages">
+                {% if messages|length > 0 %} {% for message in messages %} {% if
+                    message.uid == uid %}
+                    <div class="my-messages">
+                        <p class="user-name">{{ message.user_name }}</p>
+                        <p class="box box-right">{{ message.message }}</p>
+                        <!-- <form action="/delete_message" method="POST">
+                            <input type="hidden" value="{{ channel.id }}" name="cid" />
+                            <button
+                            class="delete-message-button"
+                            name="message_id"
+                            value="{{ message.id }}"
+                            >
+                            削除
+                            </button>
+                        </form> -->
+                        <p class="message-created_at">{{ message.created_at }}</p>
+                    </div>
+                    {% else %}
+                    <div class="messages">
+                        <p class="user-name">{{ message.user_name }}</p>
+                        <p class="box box-left">{{ message.message }}</p>
+                        <p class="message-created_at">{{ message.created_at }}</p>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                    {% else %}
+                    <div id="no-message">
+                        <p>メッセージ履歴がありません</p>
+                    </div>
+                    {% endif %}
+            </div>
+            
         </div>
         <div class="layout-message-container">
             <div class="massage-send-box">  

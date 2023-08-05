@@ -18,6 +18,11 @@
     background-color: #7895CB;
 }
 
+.layout-header-container >h1{
+    padding-top: 2%;
+    padding-left: 5%;
+}
+
 .layout-sidebar-container {
     grid-column: 1;
     grid-row: 1 / 5;
@@ -31,9 +36,20 @@
 }
 
 .block-contents-container {
+    height: 95%;
     position: absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%) ;
-    font-size:30px ;
+    font-size: clamp(1px,2.0vw,100px);
+}
+
+.frash-message{
+    color:red;
+}
+
+
+input {
+    width: 100%;
+    font-size: 100%;
 }

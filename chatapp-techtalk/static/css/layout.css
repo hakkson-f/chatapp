@@ -66,16 +66,3 @@
     background-color: #7895CB;
     position: relative;
 }
-
-
-.block-contents-profile {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 41%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}

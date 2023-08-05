@@ -50,6 +50,13 @@ def userLogin():
     return redirect('/login')
 
 
+# ログアウト
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/login')
+
+
 #サインアップページの表示
 @app.route('/signup')
 def signup():
@@ -89,7 +96,8 @@ def userSignup():
 #チャンネル詳細ページの表示
 @app.route('/detail')
 def detail():
-    return render_template('/detail.html')
+    channel = "hoge"
+    return render_template('/detail.html',channel=channel)
 
 @app.route('/test')
 def test():

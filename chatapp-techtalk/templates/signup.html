@@ -18,17 +18,17 @@
                 
                 <form method="post" action="">
                     <p>名前:</p>
-                    <p><input type="text" name="username" placeholder="名前"></p>
+                    <input type="text" name="username" placeholder="名前">
                     <p>メールアドレス:</p>
-                    <p><input type="text" name="email"></p>
+                    <input type="text" name="email">
                     <p>パスワード:</p>
-                    <p><input type="password" name="password1"></p>
+                    <input type="password" name="password1">
                     <p>パスワード(再入力):</p>
-                    <p><input type="password" name="password2"></p>
+                    <input type="password" name="password2">
 
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
-                            <ul>
+                            <ul class="frash-message">
                             {% for message in messages %}
                                 <li>{{ message }}</li>
                             {% endfor %}

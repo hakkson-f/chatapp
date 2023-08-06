@@ -143,6 +143,10 @@
     padding: 0 7px;
 }
 
+.my-text >a{
+    color:aliceblue;
+}
+
 .others-text {
     padding: 0 7px;
 }

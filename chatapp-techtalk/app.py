@@ -99,6 +99,18 @@ def detail():
     channel = "hoge"
     return render_template('/detail.html',channel=channel)
 
+
+#チャンネル追加ページの表示
+@app.route('/add-channel')
+def addchannel():
+    return render_template('/add-channel.html')
+
+# チャンネルの追加
+@app.route('/add-channel', methods=['POST'])
+def add_channel():
+    return render_template('/add-channel.html')
+
+
 @app.route('/test')
 def test():
     test = "hoge"

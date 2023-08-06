@@ -97,15 +97,15 @@
                 <form
                     class="send-box"
                     action="/message"
-                    method="POST"
+                    method="post"
                     name="newMessageForm"
                 >
                     <textarea name="message" class="send-text" placeholder="メッセージ入力欄" autofocus></textarea>
                     <input type="hidden" name="cid" value="{{ channel.id }}" />
                     <div class="send-btn-box">
-                        <a href="">
-                        <img class="send-btn-icon" src="../static/icon/send_icon.png">
-                        </a>
+                        <button type="image" id="add-message-button">
+                            <img class="send-btn-icon" src="../static/icon/send_icon.png">
+                        </button>
                     </div>        
                 </form>
             </div>

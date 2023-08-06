@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="layout-contents-container">
+        <div class="layout-contents-container" id="layout-contents-container">
             <div class="search-messages">
                 <label for="search-messages">本文検索</label>
                 <input type="text" id="search-messages">
@@ -125,21 +125,44 @@
     <script>
         function AutoLink() {
         var str = document.getElementById('message').value
-        var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;正規表現（/〜/）を解釈してくれないエディタ等で自動整形を崩さないため。
-        var regexp_makeLink = function(all, url, h, href) {
-        return '\<a href="h' + href + '" target="_blank"\>' + url + '\</a\>';
-        }
-        var textWithLink = str.replace(regexp_url, regexp_makeLink);
-        document.getElementById('url-message').innerHTML = textWithLink
+        if( str.match(/((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/)){
+            var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;正規表現（/〜/）を解釈してくれないエディタ等で自動整形を崩さないため。
+            var regexp_makeLink = function(all, url, h, href) {
+                return '<a href="h' + href + '" target="_blank"><br> ' + url + '<br><img src="http://capture.heartrails.com/400x300/border?' + url + '" width="70%" /></a><br>';
+                }
+            var textWithLink = str.replace(regexp_url, regexp_makeLink);
+            document.getElementById('url-message').innerHTML = textWithLink;
+
+        }else{
+            var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;正規表現（/〜/）を解釈してくれないエディタ等で自動整形を崩さないため。
+            var regexp_makeLink = function(all, url, h, href) {
+                return '<a href="h' + href + '" target="_blank">' + url + '</a>';
+                }
+            var textWithLink = str.replace(regexp_url, regexp_makeLink);
+            document.getElementById('url-message').innerHTML = textWithLink;
+            }
         }
     </script>
     <script>
         var arr = document.getElementsByClassName('my-text');
         
         for(var i = 0; i < arr.length; i++){
-            console.log(arr[i].innerText);
+            <!-- console.log(arr[i].innerText); -->
             arr[i].innerHTML = arr[i].innerText;
             }
+    </script>
+    <script>
+        var arr = document.getElementsByClassName('others-text');
+        
+        for(var i = 0; i < arr.length; i++){
+            <!-- console.log(arr[i].innerText); -->
+            arr[i].innerHTML = arr[i].innerText;
+            }
+    </script>
+    <script>
+        // 各チャンネル詳細ページ内、ページ読み込み時に自動で下までスクロールする
+        var target = document.getElementById('layout-contents-container');
+        target.scrollTop=target.scrollHeight;
     </script>
 </body>
 </html>

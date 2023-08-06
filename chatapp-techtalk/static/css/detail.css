@@ -218,6 +218,10 @@
     width: 60%;
 }
 
+a {
+    word-wrap:break-word;
+}
+
 #url-message{
     display: none;
 }

@@ -126,7 +126,7 @@ def add_message():
     if uid is None:
         return redirect('/login')
 
-    message = request.form.get('message')
+    message = request.form.get('url-message')
     cid = request.form.get('cid')
 
     if message:

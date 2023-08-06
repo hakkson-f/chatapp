@@ -204,6 +204,7 @@
     align-items: center;
     background-color: azure;
     border: none;
+    cursor: pointer;
 }
 
 .no-message{
@@ -215,4 +216,8 @@
 
 .send-btn-icon {
     width: 60%;
+}
+
+#url-message{
+    display: none;
 }

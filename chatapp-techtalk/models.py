@@ -80,3 +80,48 @@ class dbConnect:
       finally:
         if cur is not None:
           cur.close()
+
+     # チャンネル詳細ページに移行するためのチャンネルデータ取得
+    def getChannelById(cid):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM channels WHERE id=%s;"
+            cur.execute(sql, (cid))
+            channel = cur.fetchone()
+            return channel
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close()
+
+
+     # チャンネルに紐づくメッセージ一覧を取得
+    def getMessageAll(cid):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT id,users.uid, user_name, message,created_at FROM messages INNER JOIN users ON messages.uid = users.uid WHERE cid = %s;"
+            cur.execute(sql, (cid))
+            messages = cur.fetchall()
+            return messages
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close()
+
+     # メッセージの新規投稿をデータベースへ反映
+    def createMessage(uid, cid, message):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "INSERT INTO messages(uid, cid, message) VALUES(%s, %s, %s)"
+            cur.execute(sql, (uid, cid, message))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close()

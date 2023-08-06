@@ -24,6 +24,7 @@ services:
       - MYSQL_DATABASE=chatapp
       - MYSQL_USER=testuser
       - MYSQL_PASSWORD=testuser
+      - TZ=Asia/Tokyo
     # DBのコンテナのヘルスチェックを行う
     # mysqladmin(MySQLサーバーの管理を行うクライアントを使ってDBコンテナ自身(127.0.0.1)にpingを送ってヘルスチェックを行う
     healthcheck:

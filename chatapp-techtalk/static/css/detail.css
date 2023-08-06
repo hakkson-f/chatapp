@@ -179,7 +179,7 @@
 
 .send-btn-box {
     width: 6%;
-    height: 80%;
+    height: 90%;
     margin-left: 0.5%;
     background-color: azure;
     display: flex;
@@ -187,10 +187,13 @@
     align-items: center;
 }
 
-.send-btn-box > a{
+.send-btn-box > button{
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: azure;
+    border: none;
 }
 
 .no-message{

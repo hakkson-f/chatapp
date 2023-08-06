@@ -120,6 +120,16 @@
     color: white;
 }
 
+.delete-message{
+    text-align: right;
+    margin-right: 3%;
+}
+
+#delete-message-button{
+    width: 5%;
+    min-width: 40px;
+}
+
 
 .others-message{
     /* float: left; */

@@ -125,3 +125,17 @@ class dbConnect:
             abort(500)
         finally:
             cur.close()
+
+     # メッセージの削除をデータベースへ反映
+    def deleteMessage(message_id):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "DELETE FROM messages WHERE id=%s;"
+            cur.execute(sql, (message_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close()

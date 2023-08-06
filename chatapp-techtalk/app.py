@@ -119,7 +119,7 @@ def add_channel():
 
 
 
-# メッセージの投稿
+# メッセージの新規投稿
 @app.route('/message', methods=['POST'])
 def add_message():
     uid = session.get("uid")
@@ -133,6 +133,23 @@ def add_message():
         dbConnect.createMessage(uid, cid, message)
 
     return redirect('/detail/{cid}'.format(cid = cid))
+
+
+# メッセージの削除
+@app.route('/delete_message', methods=['POST'])
+def delete_message():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+
+    message_id = request.form.get('message-id')
+    cid = request.form.get('cid')
+
+    if message_id:
+        dbConnect.deleteMessage(message_id)
+
+    return redirect('/detail/{cid}'.format(cid = cid))
+
 
 
 @app.route('/test')

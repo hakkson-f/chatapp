@@ -61,9 +61,11 @@
             <div class="message-module my-message">
                 <div class="message-box">
                     <div class="message-content">
-                        <div class="message-text my-text">
+                        <div class="message-text my-text" >
                             {{ message.message }}
+                            
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -80,9 +82,9 @@
             <div class="message-module message-left others-message">
                 <div class="message-box">
                     <div class="message-content">
-                        <div class="message-text others-text">
+                        <p class="message-text others-text">
                             {{ message.message }}
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -103,17 +105,41 @@
                     action="/message"
                     method="post"
                     name="newMessageForm"
+                    onsubmit="AutoLink()"
                 >
-                    <textarea name="message" class="send-text" placeholder="メッセージ入力欄" autofocus></textarea>
+                    <textarea name="message" class="send-text" placeholder="メッセージ入力欄" autofocus id="message" cols="50"></textarea>
                     <input type="hidden" name="cid" value="{{ channel.id }}" />
                     <div class="send-btn-box">
-                        <button type="image" id="add-message-button">
+                        <button type="image" id="add-message-button" onclick="AutoLink()">
                             <img class="send-btn-icon" src="../static/icon/send_icon.png">
                         </button>
-                    </div>        
+                    </div>
+                    <textarea type="text" id="url-message" name="url-message"></textarea>
+                       
                 </form>
             </div>
         </div>
     </div>
+
+
+    <script>
+        function AutoLink() {
+        var str = document.getElementById('message').value
+        var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;正規表現（/〜/）を解釈してくれないエディタ等で自動整形を崩さないため。
+        var regexp_makeLink = function(all, url, h, href) {
+        return '\<a href="h' + href + '" target="_blank"\>' + url + '\</a\>';
+        }
+        var textWithLink = str.replace(regexp_url, regexp_makeLink);
+        document.getElementById('url-message').innerHTML = textWithLink
+        }
+    </script>
+    <script>
+        var arr = document.getElementsByClassName('my-text');
+        
+        for(var i = 0; i < arr.length; i++){
+            console.log(arr[i].innerText);
+            arr[i].innerHTML = arr[i].innerText;
+            }
+    </script>
 </body>
 </html>

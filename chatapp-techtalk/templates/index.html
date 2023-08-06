@@ -9,7 +9,9 @@
 <body>
     <div class="layout-container">
         <div class="layout-header-container">
-            チャンネル名一覧
+            <h1 class="header-title">
+                チャンネル名一覧
+            </h1>
         </div>
         <div class="layout-sidebar-container">
             <div class="block-sidebar-icon">
@@ -38,15 +40,15 @@
             <div class="channels-container">
                 <div class="add-channels-box">
                     <div class="add-channels">
-                        <a href="" style="font-size: medium;"><b>チャンネル新規追加⊕</b></b>
+                        <a href="/add-channel" style="font-size: medium;"><b>チャンネル新規追加⊕</b></b>
                         </a>
                     </div>
                 </div>
-                <div class="search-channels">
+                <form class="search-channels" method="post" action="">
                     <label for="search-channels"><b>チャンネル検索</b></label>
                     <input type="text" id="search-channels" autofocus>
-                    <button type="button" style="font-size: medium;">検索</button>
-                </div>
+                    <button type="submit" style="font-size: medium;">検 索</button>
+                </form>
                 <div class="channels-box">
                     <ul class="channnel-list">
                         {% for channel in channels %}

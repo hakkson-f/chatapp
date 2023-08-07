@@ -6,6 +6,12 @@ import hashlib
 import uuid
 import re
 
+# ↓test用。最終発表版では削除
+import pymysql
+from db import db
+# ↑ここまで
+
+
 app = Flask(__name__)
 app.secret_key = uuid.uuid4().hex
 app.permanent_session_lifetime = timedelta(days=30)
@@ -154,8 +160,17 @@ def delete_message():
 
 @app.route('/test')
 def test():
-    test = "hoge"
-    return render_template('/test.html',test = test)
+        test = ""
+        cur = None
+        conn = db.getConnection()
+        cur = conn.cursor()
+        sql = "SELECT email FROM users;"
+        cur.execute(sql)
+        channels = cur.fetchall()
+        for i in range(len(channels)):
+            test = test + ',' + str(channels[i]['email'])
+        
+        return render_template('/test.html',test = test)
 
 ## おまじない
 if __name__ == "__main__":

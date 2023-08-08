@@ -81,6 +81,35 @@ class dbConnect:
         if cur is not None:
           cur.close()
 
+    #チャンネル追加
+    def getChannelByName(channel_name):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM channels WHERE name=%s;"
+            cur.execute(sql, (channel_name))
+            channel = cur.fetchone()
+            return channel
+        except Exception as e:
+            print(str(e) + 'が発生しています')
+            return None
+        finally:
+            cur.close()
+
+    def addChannel(uid, newChannelName, newChannelDescription):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "INSERT INTO channels (uid, name, abstract) VALUES (%s, %s, %s);"
+            cur.execute(sql, (uid, newChannelName, newChannelDescription))
+            conn.commit()
+        except Exception as e:
+            print(str(e) + 'が発生しています')
+            return None
+        finally: 
+            cur.close()
+
+
      # チャンネル詳細ページに移行するためのチャンネルデータ取得
     def getChannelById(cid):
         try:

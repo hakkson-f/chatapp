@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>チャンネルを追加</title>
-    <link href="../static/css/add-channel.css" rel="stylesheet"
+    <link href="../static/css/add-channel.css" rel="stylesheet">
 </head>
 <body>
     <div class="layout-container">
@@ -33,21 +33,22 @@
             </div>
         </div>
         <div class="layout-contents-container">
-            <form class="contents-form" method="post">
+            <form class="contents-form" action="/add-channel" method="post" >
                 <div class="contents-input">
                     <input class="contents-input-group-name"
                     type="text"
                     placeholder="グループ名"
-                    name="add-group-name" autofocus
-                    >
+                    name="channelTitle" 
+                    autofocus
+                    />
                     <input class="contents-input-group-description"
                     type="text"
                     placeholder="グループの説明"
-                    name="add-group-description"
-                    >
+                    name="channelDescription"
+                    />
                 </div>
-                <a href="{{ url_for('add_channel') }} ">
-                <button type="button" class="contents-input-decision">決定</button>
+                <a href="">
+                <button class="contents-input-decision">決定</button>
                 </a>
             </form>
         </div>

@@ -52,9 +52,18 @@
                 <div class="channels-box">
                     <ul class="channnel-list">
                         {% for channel in channels %}
-                        
-                            <li><a href="/detail/{{ channel.id }}">{{ channel.name }}</a></li>
-                        
+                            <li>
+                                <a href="/detail/{{ channel.id }}">{{ channel.name }}</a>
+                                {% if uid == channel.uid %}
+                                <form action="/delete_channel" method="post" class="delete-channel">
+                                    <input type="hidden" value="{{ channel.id}}" name="cid">
+                                    <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.id }}">削除
+                                        <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
+                                    </button>
+                                </form>
+                                {% endif %}
+                            </li>
+
                         {% endfor %}
                     </ul>
                 </div>

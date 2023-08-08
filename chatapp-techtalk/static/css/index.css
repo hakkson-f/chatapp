@@ -111,4 +111,10 @@
 
 ul > li{
     font-size:larger;
+    display: flex;
+    gap: 10px;
+}
+
+.delete-channel{
+
 }

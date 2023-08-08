@@ -26,7 +26,7 @@ def index():
         channels = dbConnect.getChannelAll()
         channels.reverse()
         username = dbConnect.getUsername(uid)["user_name"]
-    return render_template('index.html', channels=channels ,username=username)
+    return render_template('index.html', channels=channels ,username=username, uid=uid)
 
 #ログインページの表示
 @app.route('/login')

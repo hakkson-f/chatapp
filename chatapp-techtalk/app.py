@@ -121,6 +121,23 @@ def addchannel():
 # チャンネルの追加
 @app.route('/add-channel', methods=['POST'])
 def add_channel():
+    uid = session.get('uid')
+    # return render_template('/add-channel.html', uid=uid)
+    
+    if uid is None:
+        return redirect('login')
+    
+    channel_name = request.form.get('channelTitle')
+    channel = dbConnect.getChannelByName(channel_name)
+    if channel == None:
+        channel_description = request.form.get('channelDescription')
+        dbConnect.addChannel(uid, channel_name, channel_description)
+        return redirect('/')
+    else:
+        error = '既に同じ名前のチャンネルが存在しています'
+        return render_template('error/error.html', error_message=error)
+    
+    
     return render_template('/add-channel.html')
 
 

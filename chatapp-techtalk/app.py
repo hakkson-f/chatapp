@@ -141,6 +141,12 @@ def add_channel():
     return render_template('/add-channel.html')
 
 
+#チャンネル情報の更新ページの表示
+@app.route('/update-channel')
+def updatechannel():
+    return render_template('/update-channel.html')
+
+
 
 # メッセージの新規投稿
 @app.route('/message', methods=['POST'])

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>チャンネルを追加</title>
+    <title>チャンネル情報を更新</title>
     <link href="../static/css/add-channel.css" rel="stylesheet">
 </head>
 <body>
     <div class="layout-container">
         <div class="layout-header-container">
             <h1 class="header-title">
-                チャンネルを追加
+                チャンネル情報を更新
             </h1>
         </div>
         <div class="layout-sidebar-container">
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="layout-contents-container">
-            <form class="contents-form" action="/add-channel" method="post" >
+            <form class="contents-form" action="/update-channel" method="post" >
                 <div class="contents-input">
                     <input class="contents-input-group-name"
                     type="text"
@@ -48,7 +48,7 @@
                     />
                 </div>
                 <a href="">
-                <button class="contents-input-decision">決定</button>
+                <button class="contents-input-decision">更新</button>
                 </a>
             </form>
         </div>

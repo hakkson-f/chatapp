@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>チャンネルを追加</title>
+    <title>チャンネルを削除</title>
     <link href="../static/css/add-channel.css" rel="stylesheet">
 </head>
 <body>
     <div class="layout-container">
         <div class="layout-header-container">
             <h1 class="header-title">
-                チャンネルを追加
+                チャンネルを削除
             </h1>
         </div>
         <div class="layout-sidebar-container">
@@ -33,23 +33,14 @@
             </div>
         </div>
         <div class="layout-contents-container">
-            <form class="contents-form" action="/add-channel" method="post" >
-                <div class="contents-input">
-                    <input class="contents-input-group-name"
-                    type="text"
-                    placeholder="グループ名"
-                    name="channelTitle" 
-                    autofocus
-                    />
-                    <input class="contents-input-group-description"
-                    type="text"
-                    placeholder="グループの説明"
-                    name="channelDescription"
-                    />
+            <form class="contents-form" action="/delete-channel" method="post" >
+                <div class="modal-body">
+                    <p>削除ボタンを押すとチャンネルが消えます</p>
+                    <p>本当によろしいですか？</p>
+                    <a id="delete-confirmation-link">
+                      <button id="delete-channel-confirmation-button">削除</button>
+                    </a>
                 </div>
-                <a href="">
-                <button class="contents-input-decision">決定</button>
-                </a>
             </form>
         </div>
     </div>

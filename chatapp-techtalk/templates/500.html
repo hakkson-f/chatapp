@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サーバーエラー</title>
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='css/error.css') }}"
+  />
+
+</head>
+<body class="error">
+  <div class="error-wrapper">
+    <div class="error-content">
+      <div>
+        <span class="error-num">500</span>
+      </div>
+      <div class="error-description error404or500">
+        <p>エラーが発生しました。</p>
+        <p>管理者にお問い合わせください。</p>
+        <button class="error-button">
+          <a href="{{ url_for('index') }}">戻る</a>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

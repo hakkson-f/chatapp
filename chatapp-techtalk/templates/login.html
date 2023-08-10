@@ -16,7 +16,7 @@
         <div class="registration-title">
           <h2>ログイン</h2>
         </div>
-        <form class="registration-form" method="post">
+        <form class="registration-form" method="post" action="">
           <div class="registration-input">
             <div class="registration-input-box">
               <input class="registration-input-form input-username"
@@ -24,6 +24,7 @@
                 name="username"
                 id="username-input"
                 placeholder=" "
+                autofocus
               />
               <span>ユーザー名</span>
               <i></i>
@@ -39,7 +40,7 @@
               <i></i>
             </div>
           </div>
-          <!-- {% with messages = get_flashed_messages() %}
+          {% with messages = get_flashed_messages() %}
               {% if messages %}
                   <ul>
                   {% for message in messages %}
@@ -47,7 +48,7 @@
                   {% endfor %}
                   </ul>
               {% endif %}
-          {% endwith %} -->
+          {% endwith %}
           <div class="registration-pagechange">
             <button class="registration-button-login">ログイン</button>
             <a class="registration-link switch-singup" href="{{ url_for('signup') }}">新規登録</a>

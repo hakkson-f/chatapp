@@ -13,22 +13,33 @@
   <body>
     <div class="lyout-container">
       <div class="lyout-contents-container">
+        <div class="registration-title">
+          <h2>ログイン</h2>
+        </div>
         <form class="registration-form" method="post">
           <div class="registration-input">
-            <input class="registration-input-username"
-              type="text"
-              placeholder="ユーザー名"
-              name="username"
-              id="username-input"
-            />
-            <input class="regustration-input-passward"
-              type="password"
-              placeholder="パスワード"
-              name="password"
-              id="password-input"
-            />
+            <div class="registration-input-box">
+              <input class="registration-input-form input-username"
+                type="text"
+                name="username"
+                id="username-input"
+                placeholder=" "
+              />
+              <span>ユーザー名</span>
+              <i></i>
+            </div>
+            <div class="registration-input-box">
+              <input class="registration-input-form input-passward"
+                type="password"
+                name="password"
+                id="password-input"
+                placeholder=" "
+              />
+              <span>パスワード</span>
+              <i></i>
+            </div>
           </div>
-          {% with messages = get_flashed_messages() %}
+          <!-- {% with messages = get_flashed_messages() %}
               {% if messages %}
                   <ul>
                   {% for message in messages %}
@@ -36,15 +47,11 @@
                   {% endfor %}
                   </ul>
               {% endif %}
-          {% endwith %}
-
-          <a class="switch-passward-change" >  
-            パスワードをお忘れですか？
-          </a>
-          <div class="registration-button">
+          {% endwith %} -->
+          <div class="registration-pagechange">
             <button class="registration-button-login">ログイン</button>
-            <a class="registration-button-singup" href="{{ url_for('signup') }}">新規登録</a>
-                        
+            <a class="registration-link switch-singup" href="{{ url_for('signup') }}">新規登録</a>
+            <a class="registration-link switch-passward-change" href="#">パスワードをお忘れですか？</a>
           </div>
         </form>
       </div>

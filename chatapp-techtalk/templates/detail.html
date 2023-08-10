@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>チャットページ</title>
+    <link href="../static/css/layout.css" rel="stylesheet">
     <link href="../static/css/detail.css" rel="stylesheet">
 </head>
 <body>
@@ -18,17 +19,17 @@
                 <img class="side-bar-rogo" src="../static/icon/key_icon.png">
                 <div class="side-bar-middle-buttons">
                     <a href="/profile">
-                        <img class="sidebar-icon-profile icon" src="../static/icon/user_icon.png">
+                        <img class="sidebar-icon-profile icon sidebar-icon-clickable" src="../static/icon/user_icon.png">
                     </a>
                     <a href="/" style="display: inline-block">
-                        <img class="sidebar-icon-search icon" src="../static/icon/search_icon.png">
+                        <img class="sidebar-icon-search icon sidebar-icon-clickable" src="../static/icon/search_icon.png">
                     </a>
                     <!-- <a href="">
                         <img class="sidebar-icon-plus" src="../static/icon/plus_icon.png">
                     </a>                                      -->
                 </div>
                 <a href="/logout" style="display: inline-block">
-                    <img class="sidebar-icon-logout icon" src="../static/icon/logout_icon.png">
+                    <img class="sidebar-icon-logout icon sidebar-icon-clickable" src="../static/icon/logout_icon.png">
                 </a>
             </div>
         </div>
@@ -50,53 +51,55 @@
         </div>
 
         <div class="layout-contents-container" id="layout-contents-container">
-            <div class="search-messages">
-                <label for="search-messages">本文検索</label>
-                <input type="text" id="search-messages">
-                <button type="button">検索</button>
-            </div>
+           
+                <div class="search-messages">
+                    <label for="search-messages">本文検索</label>
+                    <input type="text" id="search-messages">
+                    <button type="button">検索</button>
+                </div>
 
-            {% if messages|length > 0 %} {% for message in messages %} {% if message.uid == uid %} 
-            <p class="user-name message-right">{{ message.user_name }}</p>     
-            <div class="message-module my-message">
-                <div class="message-box">
-                    <div class="message-content">
-                        <div class="message-text my-text" >
-                            {{ message.message }}
+                {% if messages|length > 0 %} {% for message in messages %} {% if message.uid == uid %} 
+                <p class="user-name message-right">＠{{ message.user_name }}</p>     
+                <div class="message-module my-message">
+                    <div class="message-box">
+                        <div class="message-content">
+                            <div class="message-text my-text" >
+                                {{ message.message }}
+                                
+                            </div>
                             
                         </div>
-                        
                     </div>
                 </div>
-            </div>
-            <p class="message-created_at message-right">{{ message.created_at }}</p>
-            <form action="/delete_message" method="post" class="delete-message">
-                <input type="hidden" value="{{ channel.id}}" name="cid">
-                <button type="image" id="delete-message-button" name="message-id" value="{{ message.id }}">削除
-                    <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
-                </button>
+                <p class="message-created_at message-right">{{ message.created_at }}</p>
+                <form action="/delete_message" method="post" class="delete-message">
+                    <input type="hidden" value="{{ channel.id}}" name="cid">
+                    <button type="image" id="delete-message-button" name="message-id" value="{{ message.id }}">削除
+                        <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
+                    </button>
 
-            </form>
-            {% else %}
-            <p class="user-name message-left">{{ message.user_name }}</p>
-            <div class="message-module message-left others-message">
-                <div class="message-box">
-                    <div class="message-content">
-                        <p class="message-text others-text">
-                            {{ message.message }}
-                        </p>
+                </form>
+                {% else %}
+                <p class="user-name message-left">＠{{ message.user_name }}</p>
+                <div class="message-module message-left others-message">
+                    <div class="message-box">
+                        <div class="message-content">
+                            <p class="message-text others-text">
+                                {{ message.message }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <p class="message-created_at message-left">{{ message.created_at }}</p>
-            {% endif %}
-            {% endfor %}
-            {% else %}
-            <div class="no-message">
-                <p>まだメッセージがありません</p>
-            </div>
-            {% endif %}
+                <p class="message-created_at message-left">{{ message.created_at }}</p>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <div class="no-message">
+                    <p>まだメッセージがありません</p>
+                </div>
+                {% endif %}
 
+            
         </div>
         <div class="layout-send-container">
             <div class="block-send-contaner">

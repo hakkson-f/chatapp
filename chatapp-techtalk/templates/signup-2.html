@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>新規登録</title>
+    <link href="../static/css/layout.css" rel="stylesheet">
     <!-- <link rel="icon" href="" /> ファビコンの設定 -->
     <link href="../static/css/signup-2.css" rel="stylesheet">
     <!-- フォントの設定
@@ -11,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;900&family=M+PLUS+1:wght@200&display=swap" rel="stylesheet"> -->
   </head>
   <body>
-    <div class="lyout-container">
-      <div class="lyout-contents-container">
+    <div class="layout-container">
+      <div class="layout-contents-container">
         <div class="registration-title">
           <h2>新規登録</h2>
         </div>
@@ -70,7 +71,7 @@
           {% endwith %}
             <div class="registration-pagechange">
               <button class="registration-button-login">登録する</button>
-              <a class="registration-link switch-passward-change" href="{{ url_for('login') }}">ロクインに戻る</a>
+              <a class="registration-link switch-passward-change" href="{{ url_for('login') }}">ログインに戻る</a>
             </div>
           </div>
         </form>

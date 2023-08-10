@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>login</title>
     <!-- <link rel="icon" href="" /> ファビコンの設定 -->
-    <link href="../static/css/login.css" rel="stylesheet" tipe=""text/css>
+    <link href="../static/css/signup-2.css" rel="stylesheet" tipe=""text/css>
     <!-- フォントの設定
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
     <div class="lyout-container">
       <div class="lyout-contents-container">
         <div class="registration-title">
-          <h2>ログイン</h2>
+          <h2>新規登録</h2>
         </div>
         <form class="registration-form" method="post">
           <div class="registration-input">
@@ -35,10 +35,29 @@
                 id="password-input"
                 placeholder=" "
               />
+              <span>メールアドレス</span>
+              <i></i>
+            </div>
+            <div class="registration-input-box">
+              <input class="registration-input-form input-passward"
+                type="password"
+                name="password"
+                id="password-input"
+                placeholder=" "
+              />
               <span>パスワード</span>
               <i></i>
             </div>
-          </div>
+            <div class="registration-input-box">
+              <input class="registration-input-form input-passward"
+                type="password"
+                name="password"
+                id="password-input"
+                placeholder=" "
+              />
+              <span>パスワード（再入力）</span>
+              <i></i>
+            </div>
           <!-- {% with messages = get_flashed_messages() %}
               {% if messages %}
                   <ul>
@@ -48,10 +67,10 @@
                   </ul>
               {% endif %}
           {% endwith %} -->
-          <div class="registration-pagechange">
-            <button class="registration-button-login">ログイン</button>
-            <a class="registration-link switch-singup" href="{{ url_for('signup') }}">新規登録</a>
-            <a class="registration-link switch-passward-change" href="#">パスワードをお忘れですか？</a>
+            <div class="registration-pagechange">
+              <button class="registration-button-login">登録する</button>
+              <a class="registration-link switch-passward-change" href="#">ロクインに戻る</a>
+            </div>
           </div>
         </form>
       </div>

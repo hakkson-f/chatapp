@@ -66,7 +66,7 @@ def logout():
 #サインアップページの表示
 @app.route('/signup')
 def signup():
-    return render_template('/signup.html')
+    return render_template('/signup-2.html')
 
 #サインアップ処理
 @app.route('/signup', methods=['POST'])

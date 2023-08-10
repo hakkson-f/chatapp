@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>login</title>
+    <title>新規登録</title>
     <!-- <link rel="icon" href="" /> ファビコンの設定 -->
-    <link href="../static/css/signup-2.css" rel="stylesheet" tipe=""text/css>
+    <link href="../static/css/signup-2.css" rel="stylesheet">
     <!-- フォントの設定
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
         <div class="registration-title">
           <h2>新規登録</h2>
         </div>
-        <form class="registration-form" method="post">
+        <form class="registration-form" method="post" action="">
           <div class="registration-input">
             <div class="registration-input-box">
               <input class="registration-input-form input-username"
@@ -24,14 +24,15 @@
                 name="username"
                 id="username-input"
                 placeholder=" "
+                autofocus
               />
               <span>ユーザー名</span>
               <i></i>
             </div>
             <div class="registration-input-box">
               <input class="registration-input-form input-passward"
-                type="password"
-                name="password"
+                type="text"
+                name="email"
                 id="password-input"
                 placeholder=" "
               />
@@ -41,7 +42,7 @@
             <div class="registration-input-box">
               <input class="registration-input-form input-passward"
                 type="password"
-                name="password"
+                name="password1"
                 id="password-input"
                 placeholder=" "
               />
@@ -51,14 +52,14 @@
             <div class="registration-input-box">
               <input class="registration-input-form input-passward"
                 type="password"
-                name="password"
+                name="password2"
                 id="password-input"
                 placeholder=" "
               />
               <span>パスワード（再入力）</span>
               <i></i>
             </div>
-          <!-- {% with messages = get_flashed_messages() %}
+          {% with messages = get_flashed_messages() %}
               {% if messages %}
                   <ul>
                   {% for message in messages %}
@@ -66,10 +67,10 @@
                   {% endfor %}
                   </ul>
               {% endif %}
-          {% endwith %} -->
+          {% endwith %}
             <div class="registration-pagechange">
               <button class="registration-button-login">登録する</button>
-              <a class="registration-link switch-passward-change" href="#">ロクインに戻る</a>
+              <a class="registration-link switch-passward-change" href="{{ url_for('login') }}">ロクインに戻る</a>
             </div>
           </div>
         </form>

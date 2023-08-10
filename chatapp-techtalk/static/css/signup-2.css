@@ -1,0 +1,146 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.lyout-container {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    background-color: #CFE8FF;
+}
+
+.lyout-contents-container{
+    grid-column : 2;
+    grid-row :2;
+    background-color: #7895CB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.registration-title {
+    width: 65%;
+    height: 11%;
+    font-size: 1.7em;
+    color: #343c78;
+}
+
+.registration-form {
+    width: 65%;
+    height: 60%;
+}
+
+.registration-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.registration-input-box {
+    position: relative;
+    width: 85%;
+    height: 30px;
+}
+
+.registration-input-box > input  {
+    width: 100%;
+    height: 100%;
+    padding-left: 6px;
+    font-size: 17px; 
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color:#343c78;
+    transition: 0.5s;
+    position: relative;
+    z-index: 8;
+
+}
+
+.registration-input-box > span {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #343c78;
+    pointer-events: none;
+    transition: 0.5s;
+    font-size: 1.25em;
+}
+
+.registration-input-box > input:focus ~ span,
+.registration-input-box > input:not(:placeholder-shown) ~ span
+{
+    color: #CFE8FF;
+    font-size: 0.75em;
+    transform: translateY(-30px);
+}
+
+.registration-input-box > i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #4A55A2;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.registration-input-box > input:focus ~ i,
+.registration-input-box > input:not(:placeholder-shown) ~ i
+{
+    height: 30px;
+    background-color: #CFE8FF;
+}
+
+.registration-pagechange{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 100%;
+    height: 35%;
+}
+
+.registration-button-login {
+    width: 48%;
+    height: 39px;
+    border: none;
+    outline: none;
+    background-color: #CFE8FF;
+    border-radius: 5px;
+    border-color: #CFE8FF;
+    font-size: 17.2px;
+    color:#343c78;
+    transition: all 0.5s;
+}
+
+.registration-button-login:hover,
+.registration-button-login:focus
+{
+    background-color: #343c78;
+    color: white;
+}
+
+.registration-link {
+    color: #343c78;
+    text-decoration: none;
+    position: relative;
+}
+
+.registration-link:hover,
+.registration-link:focus
+{
+    color:#CFE8FF;
+}

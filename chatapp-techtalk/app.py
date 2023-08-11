@@ -195,6 +195,16 @@ def test():
         
         return render_template('/test.html',test = test)
 
+
+@app.errorhabdler(404)
+def show_error404(error):
+    return render_template('404.html'),404
+
+
+@app.errorhandler(500)
+def show_error500(error):
+    return render_template('500.html'),500
+
 ## おまじない
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)

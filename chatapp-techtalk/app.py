@@ -196,7 +196,7 @@ def test():
         return render_template('/test.html',test = test)
 
 
-@app.errorhabdler(404)
+@app.errorhandler(404)
 def show_error404(error):
     return render_template('404.html'),404
 

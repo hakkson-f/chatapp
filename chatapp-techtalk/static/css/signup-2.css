@@ -49,14 +49,14 @@
 .registration-input-box {
     position: relative;
     width: 85%;
-    height: 30px;
+    height: 37px;
 }
 
 .registration-input-box > input  {
     width: 100%;
     height: 100%;
     padding-left: 6px;
-    font-size: 17px; 
+    font-size: 19px; 
     background-color: transparent;
     outline: none;
     box-shadow: none;
@@ -84,7 +84,7 @@
 {
     color: #CFE8FF;
     font-size: 0.75em;
-    transform: translateY(-30px);
+    transform: translateY(-37px);
 }
 
 .registration-input-box > i {
@@ -103,7 +103,7 @@
 .registration-input-box > input:focus ~ i,
 .registration-input-box > input:not(:placeholder-shown) ~ i
 {
-    height: 30px;
+    height: 37px;
     background-color: #CFE8FF;
 }
 
@@ -117,7 +117,7 @@
     height: 35%;
 }
 
-.registration-button-login {
+.registration-button-signup {
     width: 48%;
     height: 39px;
     margin-bottom: 2%;
@@ -128,11 +128,11 @@
     border-color: #CFE8FF;
     font-size: 17.2px;
     color:#343c78;
-    transition: all 0.5s;
+    transition: background-color 0.5s, color 0.5s;
 }
 
-.registration-button-login:hover,
-.registration-button-login:focus
+.registration-button-signup:hover,
+.registration-button-signup:focus
 {
     background-color: #343c78;
     color: white;
@@ -143,13 +143,23 @@
     padding: 1%;
     text-decoration: none;
     position: relative;
-    border: #343c78 2px solid;
-    border-radius: 10%;
 }
 
 .registration-link:hover,
 .registration-link:focus
 {
     color:#CFE8FF;
-    border: #CFE8FF 2px solid;
+}
+
+@media screen and (max-height: 670px) {
+    .registration-title {
+        display: none;
+    }
+    .registration-button-signup {
+        font-size: 0px;
+    }
+    .registration-button-signup::before {
+        font-size: 17.2px;
+        content: '新規登録';
+    }
 }

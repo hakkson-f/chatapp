@@ -162,4 +162,8 @@
         font-size: 17.2px;
         content: '新規登録';
     }
+
+    .registration-form {
+        height: 80%;
+    }
 }

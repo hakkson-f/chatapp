@@ -60,7 +60,7 @@
               <span>パスワード（再入力）</span>
               <i></i>
             </div>
-          {% with messages = get_flashed_messages() %}
+          <!-- {% with messages = get_flashed_messages() %}
               {% if messages %}
                   <ul>
                   {% for message in messages %}
@@ -68,7 +68,7 @@
                   {% endfor %}
                   </ul>
               {% endif %}
-          {% endwith %}
+          {% endwith %} -->
             <div class="registration-pagechange">
               <button class="registration-button-signup">登録する</button>
               <a class="registration-link switch-login-page" href="{{ url_for('login') }}">ログインに戻る</a>

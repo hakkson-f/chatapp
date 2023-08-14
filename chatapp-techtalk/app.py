@@ -241,8 +241,8 @@ def passwordChangeUrlMail():
 
     else:
     #パスワード再設定用メール通知
-        msg = Message('パスワード再設定通知', recipients=[sendemail])
-        msg.body = "TechTalkからパスワード再設定の連絡がありました。\n http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
+        msg = Message('パスワード再設定用URL', recipients=[sendemail])
+        msg.body = "TechTalkにアクセスしてパスワード再設定をしてください。\n http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
         mail.send(msg)
 
         flash('メールを送りました') 
@@ -283,7 +283,7 @@ def updataPassword(passhash):
         msg = Message('パスワード再設定通知', recipients=[user['email']])
         msg.body = "TechTalkのパスワード再設定を検知しました。\n" 
         mail.send(msg)
-        
+
         return redirect('/')
     
     return render_template('password-change.html', user=user)

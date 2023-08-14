@@ -38,6 +38,8 @@ def searchChannels():
     else:
         channel_name=request.form.get('search-channels')
         channels = dbConnect.searchChannels(channel_name)
+        if len(channels) != 0:
+            channels.reverse()
         username = dbConnect.getUsername(uid)["user_name"]
             
     return render_template('search-channel.html', channels=channels ,username=username, uid=uid)

@@ -11,7 +11,7 @@
     <div class="layout-container">
         <div class="layout-header-container">
             <h1 class="header-title">
-                チャンネル名一覧
+                チャンネル名検索結果
             </h1>
         </div>
         <div class="layout-sidebar-container">
@@ -52,6 +52,12 @@
                 </form>
                 <div class="channels-box">
                     <ul class="channnel-list">
+                        {% if channels|length == 0 %}
+                        <h3>該当のチャンネルはありません</h3>
+                        
+                        
+
+                        {% else %}
                         {% for channel in channels %}
                             <li>
                                 <a href="/detail/{{ channel.id }}">{{ channel.name }}</a>
@@ -66,6 +72,8 @@
                             </li>
 
                         {% endfor %}
+                        {% endif %}
+                        
                     </ul>
                 </div>
             </div>

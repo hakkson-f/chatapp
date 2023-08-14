@@ -85,6 +85,11 @@ def userLogin():
                 flash('パスワードが間違っています！')
             else:
                 session['uid'] = user["uid"]
+                #ログインメール通知
+                msg = Message('ログイン通知', recipients=[user['email']])
+                msg.body = "TechTalkへのログインを検知しました。\n" 
+                mail.send(msg)
+
                 return redirect('/')
     return redirect('/login')
 
@@ -237,7 +242,7 @@ def passwordChangeUrlMail():
     else:
     #パスワード再設定用メール通知
         msg = Message('パスワード再設定通知', recipients=[sendemail])
-        msg.body = "TechTalkからパスワード再設定の連絡がありました。\n http://43.207.98.64:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
+        msg.body = "TechTalkからパスワード再設定の連絡がありました。\n http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
         mail.send(msg)
 
         flash('メールを送りました') 
@@ -274,6 +279,11 @@ def updataPassword(passhash):
         dbConnect.updateUser(user['uid'], user['user_name'], user['email'], password)
         UserId = str(user['uid'])
         session['uid'] = UserId
+        #パスワード再設定通知
+        msg = Message('パスワード再設定通知', recipients=[user['email']])
+        msg.body = "TechTalkのパスワード再設定を検知しました。\n" 
+        mail.send(msg)
+        
         return redirect('/')
     
     return render_template('password-change.html', user=user)

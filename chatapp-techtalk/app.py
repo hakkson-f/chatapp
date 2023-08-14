@@ -6,6 +6,10 @@ import hashlib
 import uuid
 import re
 
+
+#ログインメール通知設定
+from flask_mail import Mail, Message
+
 # ↓test用。最終発表版では削除
 import pymysql
 from db import db
@@ -15,6 +19,18 @@ from db import db
 app = Flask(__name__)
 app.secret_key = uuid.uuid4().hex
 app.permanent_session_lifetime = timedelta(days=30)
+
+
+#メール設定
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587                             # TLSは587、SSLなら465
+app.config['MAIL_USERNAME'] = 'hackathon0701@gmail.com'
+app.config['MAIL_PASSWORD'] = 'cvvrnryfkhutmltq'        # GmailのApp用のmパスワード設定をしておく必要あり
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_DEFAULT_SENDER'] = 'hackathon'    # これがあるとsender設定が不要になる
+mail = Mail(app)
+
 
 #チャンネル一覧の表示
 @app.route('/')
@@ -43,8 +59,6 @@ def searchChannels():
         username = dbConnect.getUsername(uid)["user_name"]
             
     return render_template('search-channel.html', channels=channels ,username=username, uid=uid)
-
-
 
 
 #ログインページの表示
@@ -200,13 +214,79 @@ def delete_message():
 
 
 
+# パスワードお忘れですか？ページの表示
+@app.route('/forgot-password')
+def forgotPassword():
+    return render_template('forgot-password.html')
+
+
+# パスワードお忘れですか？からメールを送る
+@app.route('/forgot-password', methods=['POST'])
+def passwordChangeUrlMail():
+    sendemail = request.form.get('email')
+    user=dbConnect.getUser(sendemail)
+    if user is None :
+        flash('このメールアドレスのユーザーは登録されていません') 
+
+        # conn = DB.getConnection()
+        # cur = conn.cursor()
+        # sql = "SELECT uid,user_name,email,password FROM users WHERE uid=%s;"
+        # cur.execute(sql, (uid))
+        # usersdata = cur.fetchone()
+
+    else:
+    #パスワード再設定用メール通知
+        msg = Message('パスワード再設定通知', recipients=[sendemail])
+        msg.body = "TechTalkからパスワード再設定の連絡がありました。\n http://43.207.98.64:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
+        mail.send(msg)
+
+        flash('メールを送りました') 
+
+    return render_template('forgot-password.html')
+
+
+# パスワード変更ページの表示
+@app.route('/password-change/<passhash>')
+def passwordChange(passhash):
+    passhash = passhash
+    user = dbConnect.getUserFromPass(passhash)
+    if user is None :
+        return redirect('/login')
+
+    return render_template('password-change.html', user=user)
+
+
+
+# パスワード変更処理
+@app.route('/password-change/<passhash>', methods=['POST'])
+def updataPassword(passhash):
+    passhash = passhash
+    user = dbConnect.getUserFromPass(passhash)
+    password1 = request.form.get('password1')
+    password2 = request.form.get('password2')
+
+    if password1 == '' or password2 == '':
+        flash('空のフォームがあります') 
+    elif password1 != password2:
+        flash('パスワードが一致しません')
+    else:
+        password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
+        dbConnect.updateUser(user['uid'], user['user_name'], user['email'], password)
+        UserId = str(user['uid'])
+        session['uid'] = UserId
+        return redirect('/')
+    
+    return render_template('password-change.html', user=user)
+
+
+
 @app.route('/test')
 def test():
         test = ""
         cur = None
         conn = db.getConnection()
         cur = conn.cursor()
-        sql = "SELECT email FROM users;"
+        sql = "SELECT * FROM users;"
         cur.execute(sql)
         channels = cur.fetchall()
         for i in range(len(channels)):
@@ -216,11 +296,11 @@ def test():
 
 @app.route('/test2')
 def test2():
-        test = "yyy"
+        
         cur = None
         conn = db.getConnection()
         cur = conn.cursor()
-        sql = "SELECT * FROM channels WHERE name like '"+ test +"';"
+        sql = "SELECT * FROM users;"
         cur.execute(sql)
         channels = cur.fetchall()
         

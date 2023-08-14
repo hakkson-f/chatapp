@@ -32,7 +32,7 @@ class dbConnect:
             cur.close()
 
 
-#ユーザー情報の取得（名前から）
+    #ユーザー情報の取得（名前から）
     def getUserFromName(name):
         try:
             conn = db.getConnection()
@@ -47,8 +47,40 @@ class dbConnect:
         finally:
             cur.close()
 
+    
+    #ユーザー情報の取得（passwordハッシュ値から）
+    def getUserFromPass(passhash):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM users WHERE password=%s;"
+            cur.execute(sql, (passhash))
+            user = cur.fetchone()
+            return user 
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close()
 
-#ユーザー名の取得
+
+    def updateUser(uid, newUserName, newUserEmail, password):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE users SET user_name=%s, email=%s, password=%s WHERE uid=%s;"
+            cur.execute(sql, (newUserName, newUserEmail, password, uid))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しました')
+            abort(500)
+        finally:
+            cur.close()
+
+
+
+
+    #ユーザー名の取得
     def getUsername(uid):
         try:
             conn = db.getConnection()

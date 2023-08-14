@@ -28,6 +28,23 @@ def index():
         username = dbConnect.getUsername(uid)["user_name"]
     return render_template('index.html', channels=channels ,username=username, uid=uid)
 
+
+#チャンネル検索結果の表示
+@app.route('/search-channels', methods=['POST'])
+def searchChannels():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        channel_name=request.form.get('search-channels')
+        channels = dbConnect.searchChannels(channel_name)
+        username = dbConnect.getUsername(uid)["user_name"]
+            
+    return render_template('search-channel.html', channels=channels ,username=username, uid=uid)
+
+
+
+
 #ログインページの表示
 @app.route('/login')
 def login():
@@ -138,7 +155,7 @@ def add_channel():
         return render_template('error/error.html', error_message=error)
     
     
-    return render_template('/add-channel.html')
+    # retusrn render_template('/add-channel.html')
 
 
 #チャンネル情報の更新ページの表示
@@ -194,6 +211,18 @@ def test():
             test = test + ',' + str(channels[i]['email'])
         
         return render_template('/test.html',test = test)
+
+@app.route('/test2')
+def test2():
+        test = "yyy"
+        cur = None
+        conn = db.getConnection()
+        cur = conn.cursor()
+        sql = "SELECT * FROM channels WHERE name like '"+ test +"';"
+        cur.execute(sql)
+        channels = cur.fetchall()
+        
+        return render_template('/test.html',test = channels)
 
 
 @app.errorhandler(404)

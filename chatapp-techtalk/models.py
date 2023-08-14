@@ -81,7 +81,27 @@ class dbConnect:
         if cur is not None:
           cur.close()
 
-    #チャンネル追加
+
+    
+      # チャンネル検索結果を取得
+    def searchChannels(channel_name):
+      cur = None
+      try:
+        conn = db.getConnection()
+        cur = conn.cursor()
+        sql = "SELECT * FROM channels WHERE name like '%"+channel_name+"%';"
+        cur.execute(sql)
+        channels = cur.fetchall()
+        return channels
+      except Exception as e :
+        print(str(e) + 'が発生しています')
+        return None
+      finally:
+        if cur is not None:
+          cur.close()
+
+
+    # 同じchannel名があるか確認
     def getChannelByName(channel_name):
         try:
             conn = db.getConnection()
@@ -96,6 +116,8 @@ class dbConnect:
         finally:
             cur.close()
 
+    
+    #チャンネル追加
     def addChannel(uid, newChannelName, newChannelDescription):
         try:
             conn = db.getConnection()

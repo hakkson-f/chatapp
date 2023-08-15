@@ -1,0 +1,48 @@
+
+
+.icon{
+    width: 100%;
+}
+
+
+.block-contents-profile {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 41%;
+}
+
+.contents-profile-username {
+    text-align: center;
+}
+
+/* .contents-profile-email {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+} */
+
+.profile-label {
+    color: white;
+    font-size: 18.5px;
+    width: 70%;
+}
+
+
+.user-list{
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+}
+
+.profile-text {
+    color: white;
+    font-size: 15px;
+    width: 33%;
+}
+
+
+

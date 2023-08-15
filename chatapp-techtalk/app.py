@@ -87,7 +87,7 @@ def userLogin():
                 session['uid'] = user["uid"]
                 #ログインメール通知
                 msg = Message('ログイン通知', recipients=[user['email']])
-                msg.body = "TechTalkへのログインを検知しました。\n" 
+                msg.body = ""+user['user_name']+"さん、TechTalkへのログインを検知しました。\n" 
                 mail.send(msg)
 
                 return redirect('/')
@@ -233,16 +233,10 @@ def passwordChangeUrlMail():
     if user is None :
         flash('このメールアドレスのユーザーは登録されていません') 
 
-        # conn = DB.getConnection()
-        # cur = conn.cursor()
-        # sql = "SELECT uid,user_name,email,password FROM users WHERE uid=%s;"
-        # cur.execute(sql, (uid))
-        # usersdata = cur.fetchone()
-
     else:
     #パスワード再設定用メール通知
         msg = Message('パスワード再設定用URL', recipients=[sendemail])
-        msg.body = "TechTalkにアクセスしてパスワード再設定をしてください。\n http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
+        msg.body = ""+user['user_name']+"さん、TechTalkにアクセスしてパスワード再設定をしてください。\n http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
         mail.send(msg)
 
         flash('メールを送りました') 
@@ -281,13 +275,36 @@ def updataPassword(passhash):
         session['uid'] = UserId
         #パスワード再設定通知
         msg = Message('パスワード再設定通知', recipients=[user['email']])
-        msg.body = "TechTalkのパスワード再設定を検知しました。\n" 
+        msg.body = ""+user['user_name']+"さん、TechTalkのパスワード再設定を検知しました。\n" 
         mail.send(msg)
 
         return redirect('/')
     
     return render_template('password-change.html', user=user)
 
+
+#プロフィールページの表示
+@app.route('/profile')
+def profile():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        user = dbConnect.getUsername(uid)
+    
+    return render_template('/profile.html', user=user)
+
+
+#その他のプロフィールページの表示
+@app.route('/profile-other')
+def profileother():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        user = dbConnect.getUsernameOther(uid)
+    
+    return render_template('/profile-other.html', user=user)
 
 
 @app.route('/test')

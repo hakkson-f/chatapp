@@ -41,5 +41,20 @@
     width: 65%;
 }
 
+.profile-other-box{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    height:10%;
+}
+
+.profile-other-box >a{
+    text-decoration: none;
+    color: white;
+}
+
+.profile-other{
+    height: 30px;
+}
 
 

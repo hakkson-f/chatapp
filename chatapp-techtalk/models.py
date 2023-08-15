@@ -179,6 +179,19 @@ class dbConnect:
         finally: 
             cur.close()
 
+    #チャンネル削除
+    def deletechannel(cid):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "DELETE FROM channels WHERE id=%s;"
+            cur.execute(sql, (cid))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+            return None
+        finally:
+             cur.close()
 
      # チャンネル詳細ページに移行するためのチャンネルデータ取得
     def getChannelById(cid):

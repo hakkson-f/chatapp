@@ -4,27 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ページが見つかりませんでした</title>
-  <link
-  rel="stylesheet"
-  type="text/css"
-  href="{{ url_for('static',filename='css/error.css') }}"
-  />
+  <link href="../static/css/layout.css" rel="stylesheet">
+  <link href="{{ url_for('static',filename='../static/css/error.css') }}" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
 
 </head>
-<body class="error">
-    <div class="error-wrapper">
-      <div class="error-content">
-        <div>
-          <span class="error-num">404</span>
-        </div>
-        <div class="error-description error404or500">
-          <p>ページが見つかりません</p>
-          <button class="error-button">
-            <a href="{{ url_for('index') }}">戻る</a>
-          </button>
-        </div>
+<body>
+  <div class="layout-container">
+    <div class="layout-header-container">
+      <div class="error-num">
+        <span>404エラー</span>
       </div>
     </div>
-  
+    <div class="layout-sidebar-container">
+      <div class="block-sidebar-icon">
+          <img class="side-bar-rogo" src="../static/icon/key_icon.png">
+          <dev class="side-bar-middle-buttons">
+              <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
+              <img class="sidebar-icon-search sidebar-icon-clickable" src="../static/icon/search_icon.png">
+          </dev>
+          <img class="sidebar-icon-rogout sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+      </div>
+    </div>
+    <div class="layout-contents-container">
+      <div class="error-message">
+        <p>お探しのページが見つかりません</p>
+        <p>ページ先が削除、移動された可能性があります</p>
+        <p>↓のボタンからチャンネル名一覧のページに戻れます</p>
+          <button class="error-button">
+            <a href="{{ url_for('index') }}">チャットに戻る</a>
+          </button>
+      </div>
+    </div>
 </body>
 </html>

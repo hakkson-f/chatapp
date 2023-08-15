@@ -1,0 +1,28 @@
+.error-num {
+    font-size: 41.2px;
+    margin-left: 32px;
+    color: white;
+    text-shadow: -0.15em 0.12em 0.05em rgba(74, 85, 162, 0.8);
+}
+
+.error-message {
+    align-items: center;
+    text-align:center;
+    font-size: 35px;
+    margin-left: 32px;
+    color: white;
+}
+
+.error-button {
+    width: 48%;
+    height: 39px;
+    margin-bottom: 2%;
+    border: none;
+    outline: none;
+    background-color: #CFE8FF;
+    border-radius: 5px;
+    border-color: #CFE8FF;
+    font-size: 17.2px;
+    color:#343c78;
+    transition: all 0.5s;
+}

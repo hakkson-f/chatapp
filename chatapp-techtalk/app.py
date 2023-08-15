@@ -178,6 +178,25 @@ def add_channel():
     
     # retusrn render_template('/add-channel.html')
 
+#チャンネル削除機能
+@app.route('/delete_channel', methods=['POST'])
+def deletechannel():
+    uid = session.get("uid")
+    print(uid)
+    if uid is None:
+        return redirect('/login')
+    else:
+        cid = request.form.get('cid')
+        channel = dbConnect.getChannelById(cid)
+        print(channel["uid"] == uid)
+        if channel["uid"] != uid:
+            flash('チャンネルは作成者のみ削除可能です')
+            return redirect('/')
+        else:
+            dbConnect.deletechannel(cid)
+            channels = dbConnect.getChannelAll()
+            return render_template('index.html', channels=channels, uid=uid)
+
 
 #チャンネル情報の更新ページの表示
 @app.route('/update-channel')

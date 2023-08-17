@@ -11,42 +11,8 @@
     justify-content: flex-start;
 }
 
-.search-channels-form {
-    display: flex;
-    align-items: center;
-    height: 10%;
-    width: 60%;
-    position: relative;
-}
-
-.channels-form-input {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-}
-
-.channel-form-serchbtn {
-    height: 100%;
-    width: 14%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-}
-
-.search-channels-btn-icon {
-    font-size: 1.5rem;
-}
 .add-channels-box {
-    height: 45px;
+    height: 15%;
     width: 60%;
     margin-top: 10px;
 }
@@ -59,15 +25,129 @@
     background-color: transparent;
 }
 
-.add-channels-btn-icon {
-    font-size: 1.5rem;
-    margin-left: 10px;
-    margin-right: 15px;
+.add-channels-btn:hover {
+    cursor: pointer;
 }
 
+.channels-form-input:hover .add-channels-btn {
+    opacity: 0;
+}
+
+.add-channels-btn-icon {
+    font-size: 1.8rem;
+    margin-left: 10px;
+    margin-right: 15px;
+    color: #CFE8FF;
+    transition: color .3s linear;
+}
+
+.add-channels-btn:hover .add-channels-btn-icon {
+    color: #343c78;
+}
 .add-channels-btn-text {
     font-size: 1.3rem;
+    color: #CFE8FF;
+    transition: color .3s linear;
 }
+
+.add-channels-btn:hover .add-channels-btn-text {
+    color: #343c78;
+}
+
+.search-channels-form {
+    display: flex;
+    align-items: center;
+    height: 15%;
+    width: 60%;
+    position: relative;
+}
+
+.channels-form-input {
+    height: 80%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.channels-form-input:hover {
+    cursor: text;
+}
+
+.channels-form-input::placeholder {
+    font-size: 1.1rem;
+    color: #c5d6e7;
+    transition: color .15s linear;
+}
+
+.channels-form-input:hover:-webkit-input-placeholder {
+    color: #343c78;
+}
+
+.channels-form-input:hover::-moz-placeholder {
+    color: #343c78;
+}
+
+.channels-form-input:hover::-ms-input-placeholder {
+    color: #343c78;
+}
+
+.channels-form-input:hover::placeholder {
+    color: #343c78;
+}
+
+.channels-form-input:focus:-webkit-input-placeholder {
+    color: transparent;
+}
+
+.channels-form-input:focus::-moz-placeholder {
+    color:transparent
+}
+
+.channels-form-input:focus::-ms-input-placeholder {
+    color: transparent;
+}
+
+.channels-form-input:focus::placeholder {
+    color: transparent;
+}
+
+.channel-form-serchbtn {
+    height: 80%;
+    width: 14%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #CFE8FF;
+    transition: background-color .3s linear;
+}
+
+.channel-form-serchbtn:hover {
+    cursor: pointer;
+    background-color: #4A55A2;
+}
+
+.search-channels-btn-icon {
+    font-size: 1.5rem;
+    color: #4A55A2;
+    transition: color .3s linear;
+}
+
+.channel-form-serchbtn:hover .search-channels-btn-icon {
+    color: #CFE8FF;
+}
+
+.channel-form-serchbtn:focus .search-channels-btn-icon {
+    transform: translate(0px);
+}
+
 
 .channels-list-box {
     width: 60%;
@@ -88,7 +168,7 @@
 
 .channel-list {
     width: 100%;
-    height: 19%;
+    height: 15%;
     position: relative; 
     list-style: none;
     margin-bottom: 10px;
@@ -100,6 +180,12 @@
     #7baedd,
     #ddedfc
     );
+    transition: background .2s linear;
+}
+
+.channel-list:hover {
+    background: #bccae3;
+    cursor: pointer;
 }
 
 .list-chanel-icon {
@@ -107,6 +193,8 @@
     top: 50%;
     left: 4%;
     transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #4A55A2;
 }
 
 .list-channel-title {
@@ -115,26 +203,45 @@
     left: 18%;
     transform: translateY(-50%);
     text-decoration: none;
+    color: #4A55A2;
+    font-size: 1.1rem;
 }
 
-.list-chanel-icon {
-    font-size: 1.5rem;
+.list-chanel-star-btn  {
+    width: 11%;
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    right: 13.6%;
+    transform: translateY(-50%);
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
 }
+
+.list-chanel-star-icon {
+    font-size: 1.8rem;
+    color: #878fc8;
+}
+
 
 .list-delete-channel-btn {
     width: 11%;
     height: 60%;
     position: absolute;
     top: 50%;
-    right: 5%;
+    right: 2%;
     transform: translateY(-50%);
     border: none;
     outline: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .list-chanel-delite-icon {
     font-size: 1.8rem;
+    color: #2e3464;
 }
 
 .layout-modal-container {

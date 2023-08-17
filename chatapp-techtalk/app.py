@@ -204,6 +204,33 @@ def updatechannel():
     return render_template('/update-channel.html')
 
 
+#お気に入りチャンネル一覧の表示
+@app.route('/favorites')
+def favorites():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        channels = dbConnect.getFavoriteChannelAll(uid)
+        # channels.reverse()
+        username = dbConnect.getUsername(uid)["user_name"]
+    return render_template('favorites.html', channels=channels ,username=username, uid=uid)
+
+
+#お気に入りチャンネルの登録
+@app.route('/favorites_channel', methods=['POST'])
+def addfavoritesChannel():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        cid = request.form.get('cid')
+        channels = dbConnect.addFavoriteChannel(uid,cid)
+        
+        return redirect('/favorites')
+
+
+
 
 # メッセージの新規投稿
 @app.route('/message', methods=['POST'])

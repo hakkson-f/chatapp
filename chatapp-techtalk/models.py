@@ -149,6 +149,39 @@ class dbConnect:
           cur.close()
 
 
+
+     # お気に入りチャンネル一覧を取得
+    def getFavoriteChannelAll(uid):
+      cur = None
+      try:
+        conn = db.getConnection()
+        cur = conn.cursor()
+        sql = "SELECT channels.id,favorites.uid, favorites.cid, channels.name FROM favorites INNER JOIN channels ON favorites.cid = channels.id  WHERE favorites.uid=%s;"
+        cur.execute(sql,(uid))
+        channels = cur.fetchall()
+        return channels
+      except Exception as e :
+        print(str(e) + 'が発生しています')
+        return None
+      finally:
+        if cur is not None:
+          cur.close()
+
+    #お気に入りチャンネル追加
+    def addFavoriteChannel(uid, cid):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "INSERT INTO favorites (uid, cid) VALUES (%s, %s);"
+            cur.execute(sql, (uid, cid))
+            conn.commit()
+        except Exception as e:
+            print(str(e) + 'が発生しています')
+            return None
+        finally: 
+            cur.close()
+
+
     # 同じchannel名があるか確認
     def getChannelByName(channel_name):
         try:

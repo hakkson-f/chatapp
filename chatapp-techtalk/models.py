@@ -156,7 +156,7 @@ class dbConnect:
       try:
         conn = db.getConnection()
         cur = conn.cursor()
-        sql = "SELECT channels.id,favorites.uid, favorites.cid, channels.name FROM favorites INNER JOIN channels ON favorites.cid = channels.id  WHERE favorites.uid=%s;"
+        sql = "SELECT channels.id,favorites.uid, favorites.cid, channels.name, favorite_id FROM favorites INNER JOIN channels ON favorites.cid = channels.id  WHERE favorites.uid=%s;"
         cur.execute(sql,(uid))
         channels = cur.fetchall()
         return channels
@@ -180,6 +180,20 @@ class dbConnect:
             return None
         finally: 
             cur.close()
+
+     #お気に入りチャンネル解除
+    def deletefavoritechannel(favorite_id):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "DELETE FROM favorites WHERE favorite_id=%s;"
+            cur.execute(sql, (favorite_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+            return None
+        finally:
+             cur.close()
 
 
     # 同じchannel名があるか確認

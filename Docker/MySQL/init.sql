@@ -30,7 +30,7 @@ CREATE TABLE messages (
 );
 
 CREATE TABLE favorites (
-    id serial PRIMARY KEY,
+    favorite_id serial PRIMARY KEY,
     uid varchar(255) REFERENCES users(uid),
     cid integer REFERENCES channels(id) ON DELETE CASCADE
 );

@@ -44,14 +44,14 @@
                         {% for channel in channels %}
                             <li>
                                 <a href="/detail/{{ channel.id }}">{{ channel.name }}</a>
-                                {% if uid == channel.uid %}
-                                <form action="/delete_channel" method="post" class="delete-channel">
-                                    <input type="hidden" value="{{ channel.id}}" name="cid">
-                                    <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.id }}">削除
+                                
+                                <form action="/delete_favoritechannel" method="post" class="delete-channel">
+                                    <input type="hidden" value="{{ channel.favorite_id}}" name="cid">
+                                    <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.favorite_id }}">登録解除
                                         <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
                                     </button>
                                 </form>
-                                {% endif %}
+                                
                             </li>
 
                         {% endfor %}

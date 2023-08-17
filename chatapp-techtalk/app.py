@@ -230,6 +230,23 @@ def addfavoritesChannel():
         return redirect('/favorites')
 
 
+#お気に入りチャンネル解除機能
+@app.route('/delete_favoritechannel', methods=['POST'])
+def deletefavoriteChannel():
+    uid = session.get("uid")
+    print(uid)
+    if uid is None:
+        return redirect('/login')
+    else:
+        favorite_id = request.form.get('cid')
+        dbConnect.deletefavoritechannel(favorite_id)
+        
+        channels = dbConnect.getFavoriteChannelAll(uid)
+        # channels.reverse()
+        username = dbConnect.getUsername(uid)["user_name"]
+        return render_template('favorites.html', channels=channels ,username=username, uid=uid)
+
+
 
 
 # メッセージの新規投稿

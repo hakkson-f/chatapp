@@ -213,7 +213,7 @@ def favorites():
     else:
         channels = dbConnect.getFavoriteChannelAll(uid)
         if channels != None:
-            channels.reverse()
+            channels[::-1]
         username = dbConnect.getUsername(uid)["user_name"]
     return render_template('favorites.html', channels=channels ,username=username, uid=uid)
 
@@ -245,7 +245,7 @@ def deletefavoriteChannel():
         
         channels = dbConnect.getFavoriteChannelAll(uid)
         if channels != None:
-            channels.reverse()
+            channels[::-1]
         username = dbConnect.getUsername(uid)["user_name"]
         return render_template('favorites.html', channels=channels ,username=username, uid=uid)
 

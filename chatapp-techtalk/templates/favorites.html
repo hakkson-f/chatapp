@@ -41,6 +41,10 @@
             <div class="channels-container">
                 <div class="channels-box">
                     <ul class="channnel-list">
+                        {% if channels|length == 0 %}
+                            <h3>お気に入りチャンネルはまだありません</h3>
+                    
+                        {% else %}
                         {% for channel in channels %}
                             <li>
                                 <a href="/detail/{{ channel.id }}">{{ channel.name }}</a>
@@ -55,6 +59,7 @@
                             </li>
 
                         {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
             </div>

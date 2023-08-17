@@ -178,6 +178,16 @@ def add_channel():
     
     # retusrn render_template('/add-channel.html')
 
+
+#チャンネル情報の更新ページの表示
+@app.route('/update-channel')
+def updatechannel():
+    cid = request.form.get('cid')
+    print(cid)
+    channel = dbConnect.getChannelById(cid)
+    print(channel)
+    return render_template('/update-channel.html', channel=channel)
+    
 #チャンネル削除機能
 @app.route('/delete_channel', methods=['POST'])
 def deletechannel():

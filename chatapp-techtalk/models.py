@@ -226,6 +226,21 @@ class dbConnect:
         finally: 
             cur.close()
 
+
+     #チャンネル更新
+    def updateChannel(uid, newChannelName, newChannelDescription, cid):
+        try:
+            conn = db.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE channels SET uid=%s, name=%s, abstract=%s WHERE id=%s;"
+            cur.execute(sql, (uid, newChannelName, newChannelDescription, cid))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close()
+            
     #チャンネル削除
     def deletechannel(cid):
         try:

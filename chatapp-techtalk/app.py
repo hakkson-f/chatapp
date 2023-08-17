@@ -204,6 +204,50 @@ def updatechannel():
     return render_template('/update-channel.html')
 
 
+#お気に入りチャンネル一覧の表示
+@app.route('/favorites')
+def favorites():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        channels = dbConnect.getFavoriteChannelAll(uid)
+        # channels.reverse()
+        username = dbConnect.getUsername(uid)["user_name"]
+    return render_template('favorites.html', channels=channels ,username=username, uid=uid)
+
+
+#お気に入りチャンネルの登録
+@app.route('/favorites_channel', methods=['POST'])
+def addfavoritesChannel():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        cid = request.form.get('cid')
+        channels = dbConnect.addFavoriteChannel(uid,cid)
+        
+        return redirect('/favorites')
+
+
+#お気に入りチャンネル解除機能
+@app.route('/delete_favoritechannel', methods=['POST'])
+def deletefavoriteChannel():
+    uid = session.get("uid")
+    print(uid)
+    if uid is None:
+        return redirect('/login')
+    else:
+        favorite_id = request.form.get('cid')
+        dbConnect.deletefavoritechannel(favorite_id)
+        
+        channels = dbConnect.getFavoriteChannelAll(uid)
+        # channels.reverse()
+        username = dbConnect.getUsername(uid)["user_name"]
+        return render_template('favorites.html', channels=channels ,username=username, uid=uid)
+
+
+
 
 # メッセージの新規投稿
 @app.route('/message', methods=['POST'])
@@ -255,7 +299,7 @@ def passwordChangeUrlMail():
     else:
     #パスワード再設定用メール通知
         msg = Message('パスワード再設定用URL', recipients=[sendemail])
-        msg.body = ""+user['user_name']+"さん、TechTalkにアクセスしてパスワード再設定をしてください。\n http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
+        msg.body = ""+user['user_name']+"さん、TechTalkにアクセスしてパスワード再設定をしてください。\n AWS用： https://tech-talk-chat.net:5000/password-change/"+ user['password'] +" \n ローカル用： http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
         mail.send(msg)
 
         flash('メールを送りました') 

@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アカウント一覧</title>
+    <title>チャンネル一覧</title>
     <link href="../static/css/layout.css" rel="stylesheet">
-    <link href="../static/css/profile-other.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
-
+    <link href="../static/css/index.css" rel="stylesheet">
 </head>
 <body>
     <div class="layout-container">
         <div class="layout-header-container">
-            <h1 class="header-title">アカウント一覧</h1>
+            <h1 class="header-title">
+                チャンネル名一覧
+            </h1>
         </div>
         <div class="layout-sidebar-container">
             <div class="block-sidebar-icon">
@@ -35,18 +33,32 @@
                 </a>
             </div>
         </div>
+            <div class="user-name-label">
+                {{ username }} さんのお気に入りチャンネル
+            </div>
         <div class="layout-contents-container">
-            <div class="block-contents-profile">
-                <div class="contents-profile-username">
-                    <div class="contents-profile-label-username profile-label">その他 ユーザー名一覧</div>
-                    
-                    <div class="user-list">
-                    {% for user in user %}
-                    <div class="contents-profile-text-username profile-text">{{ user.user_name }}</div>
-                    {% endfor %}
-                    </div>
+            
+            <div class="channels-container">
+                <div class="channels-box">
+                    <ul class="channnel-list">
+                        {% for channel in channels %}
+                            <li>
+                                <a href="/detail/{{ channel.id }}">{{ channel.name }}</a>
+                                
+                                <form action="/delete_favoritechannel" method="post" class="delete-channel">
+                                    <input type="hidden" value="{{ channel.favorite_id}}" name="cid">
+                                    <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.favorite_id }}">登録解除
+                                        <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
+                                    </button>
+                                </form>
+                                
+                            </li>
+
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </body>

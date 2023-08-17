@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,18 @@
             <h1 class="header-title">
                 {{ channel.name }}
             </h1>
+            {% if channel.abstract is not none %}
+                <div id="channel-description">　　説明：{{ channel.abstract }}　　</div>
+            {% endif %}
+            {% if uid == channel.uid %}
+                <form action="/update-channel" method="post">
+                    <input type="hidden" value="{{ channel.id }}" name="cid">
+                    <button type="image" id="update-channel-btn"  class="secondsidebar-btn" name="channel-id" value="{{ channel.id }}">編集
+                        <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
+                    </button>
+                </form>
+
+            {% endif %}
         </div>
         <div class="layout-sidebar-container">
             <div class="block-sidebar-icon">
@@ -41,15 +53,8 @@
                 <a href="/detail/{{ channel.id }}">
                     <p class="secondsidebar-channel-name">{{ channel.name }}</p>
                 </a>
-                {% if channel.abstract is not none %}
-                    <p id="channel-description">{{ channel.abstract }}</p>
-                {% endif %}
                     <!-- もしuidとチャンネル作成者が同じならタイトル、説明を編集可能にする -->
-                {% if uid == channel.uid %}
-                    <button id="update-channel-btn"  class="secondsidebar-btn">
-                        <a href="/update-channel">編集</a>
-                    </button>
-                {% endif %}
+                
             </div>
         </div>
 

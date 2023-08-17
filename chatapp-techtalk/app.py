@@ -282,7 +282,7 @@ def passwordChangeUrlMail():
     else:
     #パスワード再設定用メール通知
         msg = Message('パスワード再設定用URL', recipients=[sendemail])
-        msg.body = ""+user['user_name']+"さん、TechTalkにアクセスしてパスワード再設定をしてください。\n http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
+        msg.body = ""+user['user_name']+"さん、TechTalkにアクセスしてパスワード再設定をしてください。\n AWS用： https://tech-talk-chat.net:5000/password-change/"+ user['password'] +" \n ローカル用： http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
         mail.send(msg)
 
         flash('メールを送りました') 

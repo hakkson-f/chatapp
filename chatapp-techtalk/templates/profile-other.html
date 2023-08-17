@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プロフィール</title>
+    <title>アカウント一覧</title>
     <link href="../static/css/layout.css" rel="stylesheet">
-    <link href="../static/css/profile-other.css" rel="stylesheet"
+    <link href="../static/css/profile-other.css" rel="stylesheet">
 </head>
 <body>
     <div class="layout-container">
         <div class="layout-header-container">
-            <h1 class="header-title">プロフィール</h1>
+            <h1 class="header-title">アカウント一覧</h1>
         </div>
         <div class="layout-sidebar-container">
             <div class="block-sidebar-icon">
@@ -34,7 +34,8 @@
         <div class="layout-contents-container">
             <div class="block-contents-profile">
                 <div class="contents-profile-username">
-                    <div class="contents-profile-label-username profile-label">その他ユーザー名一覧</div>
+                    <div class="contents-profile-label-username profile-label">その他 ユーザー名一覧</div>
+                    
                     <div class="user-list">
                     {% for user in user %}
                     <div class="contents-profile-text-username profile-text">{{ user.user_name }}</div>

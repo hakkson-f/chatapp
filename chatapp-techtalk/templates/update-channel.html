@@ -48,9 +48,11 @@
                     name="channelDescription"
                     />
                 </div>
-                <a href="">
-                <button class="contents-input-decision">更新</button>
+                <a >
+                    <input type="hidden" value="{{ channel.id }}" name="cid">
+                    <button class="contents-input-decision" name="channel-id" value="{{ channel.id }}">更新</button>
                 </a>
+                
             </form>
         </div>
     </div>

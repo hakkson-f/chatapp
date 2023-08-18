@@ -68,8 +68,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    border: 2px solid #31396e;
     outline: none;
+    border: none;
     border-radius: 5px;
     padding-left: 5%;
     font-size: 1.4rem;
@@ -83,6 +83,9 @@
     font-size: 1.1rem;
     color: #c5d6e7;
     transition: color .15s linear;
+    position: absolute;
+    top: 1rem;
+    text-align: left;
 }
 
 .channels-form-input:hover:-webkit-input-placeholder {
@@ -121,7 +124,7 @@
     height: 80%;
     width: 14%;
     position: absolute;
-    top: 2px;
+    top: 0;
     right: 0;
     z-index: 1;
     border: none;
@@ -131,7 +134,7 @@
     transition: background-color .3s linear;
 }
 
-.channel-form-serchbtn:hover {
+.channel-form-searchbtn:hover {
     cursor: pointer;
     background-color: #4A55A2;
 }
@@ -142,13 +145,10 @@
     transition: color .3s linear;
 }
 
-.channel-form-serchbtn:hover .search-channels-btn-icon {
+.channel-form-searchbtn:hover .search-channels-btn-icon {
     color: #CFE8FF;
 }
 
-.channel-form-serchbtn:focus .search-channels-btn-icon {
-    transform: translate(0px);
-}
 
 
 .channels-list-box {
@@ -218,12 +218,6 @@
     cursor: pointer;
 }
 
-.list-chanel-star-icon {
-    font-size: 1.6rem;
-    color: #878fc8;
-}
-
-
 .list-delete-channel-btn {
     width: 11%;
     height: 60%;
@@ -237,9 +231,42 @@
     cursor: pointer;
 }
 
+@keyframes bounce {
+    0% {
+        transform: translate(0%, 0%);
+    }
+    
+    30% {
+        transform: translate(0%, -15%);
+    }
+    50% {
+        transform: translate(0%, 0%);
+    }
+    60% {
+        transform: translate(0%, -5%);
+    }
+    100% {
+        transform: translate(0%, 0%);
+    }
+}
+
+.list-chanel-star-icon {
+    font-size: 1.6rem;
+    color: #878fc8;
+}
+
+.list-chanel-star-icon:hover {
+    animation: bounce 0.76s linear 0s infinite normal;
+}
+
+
 .list-chanel-delite-icon {
     font-size: 1.6rem;
     color: #2e3464;
+}
+
+.list-chanel-delite-icon:hover {
+    animation: bounce 0.76s linear 0s infinite normal;
 }
 
 .layout-modal-container {

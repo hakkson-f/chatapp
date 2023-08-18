@@ -132,12 +132,12 @@ class dbConnect:
 
     
       # チャンネル検索結果を取得
-    def searchChannels(channel_name):
+    def searchChannels(uid,channel_name):
       cur = None
       try:
         conn = db.getConnection()
         cur = conn.cursor()
-        sql = "SELECT * FROM channels WHERE name like '%"+channel_name+"%';"
+        sql = "SELECT * FROM channels LEFT JOIN favorites ON channels.id = favorites.cid and favorites.uid='"+uid+"' WHERE name like '%"+channel_name+"%';"
         cur.execute(sql)
         channels = cur.fetchall()
         return channels

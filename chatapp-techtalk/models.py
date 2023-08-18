@@ -113,12 +113,12 @@ class dbConnect:
 
 
       # チャンネル一覧を取得
-    def getChannelAll():
+    def getChannelAll(uid):
       cur = None
       try:
         conn = db.getConnection()
         cur = conn.cursor()
-        sql = "SELECT * FROM channels;"
+        sql = "SELECT * FROM channels LEFT JOIN favorites ON channels.id = favorites.cid and favorites.uid='"+uid+"';"
         cur.execute(sql)
         channels = cur.fetchall()
         return channels

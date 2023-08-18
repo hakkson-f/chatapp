@@ -39,10 +39,11 @@ def index():
     if uid is None:
         return redirect('/login')
     else:
-        channels = dbConnect.getChannelAll()
-        channels.reverse()
+        channels = dbConnect.getChannelAll(uid)
+        if len(channels) != 0:
+            channels.reverse()
         username = dbConnect.getUsername(uid)["user_name"]
-    return render_template('index.html', channels=channels ,username=username, uid=uid)
+    return render_template('index-2.html', channels=channels ,username=username, uid=uid)
 
 
 #チャンネル検索結果の表示
@@ -198,20 +199,15 @@ def deletechannel():
     else:
         cid = request.form.get('cid')
         channel = dbConnect.getChannelById(cid)
-        print(channel["uid"] == uid)
+        # print(channel["uid"] == uid)
         if channel["uid"] != uid:
             flash('チャンネルは作成者のみ削除可能です')
             return redirect('/')
         else:
             dbConnect.deletechannel(cid)
-            channels = dbConnect.getChannelAll()
-            return render_template('index.html', channels=channels, uid=uid)
-
-
-#チャンネル情報の更新ページの表示
-@app.route('/update-channel')
-def updatechannel():
-    return render_template('/update-channel.html')
+            channels = dbConnect.getChannelAll(uid)
+            channels=channels[::-1]
+            return render_template('index-2.html', channels=channels, uid=uid)
 
 
 #お気に入りチャンネル一覧の表示
@@ -223,7 +219,7 @@ def favorites():
     else:
         channels = dbConnect.getFavoriteChannelAll(uid)
         if channels != None:
-            channels[::-1]
+            channels=channels[::-1]
         username = dbConnect.getUsername(uid)["user_name"]
     return render_template('favorites.html', channels=channels ,username=username, uid=uid)
 
@@ -238,7 +234,7 @@ def addfavoritesChannel():
         cid = request.form.get('cid')
         channels = dbConnect.addFavoriteChannel(uid,cid)
         
-        return redirect('/favorites')
+        return redirect('/')
 
 
 #お気に入りチャンネル解除機能
@@ -258,6 +254,25 @@ def deletefavoriteChannel():
             channels[::-1]
         username = dbConnect.getUsername(uid)["user_name"]
         return render_template('favorites.html', channels=channels ,username=username, uid=uid)
+
+
+#チャンネル一覧からお気に入りチャンネル解除
+@app.route('/delete_favoritechannel-index', methods=['POST'])
+def deletefavoriteChannel_index():
+    uid = session.get("uid")
+    print(uid)
+    if uid is None:
+        return redirect('/login')
+    else:
+        favorite_id = request.form.get('cid')
+        
+        dbConnect.deletefavoritechannel(favorite_id)
+        
+        channels = dbConnect.getFavoriteChannelAll(uid)
+        if channels != None:
+            channels[::-1]
+        username = dbConnect.getUsername(uid)["user_name"]
+        return redirect('/')
 
 
 

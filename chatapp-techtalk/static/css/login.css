@@ -13,13 +13,18 @@
 }
 
 .layout-contents-container{
-    grid-column : 2;
-    grid-row :2;
     background-color: #7895CB;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 75%;
+    height: 60%;
 }
 
 .registration-title {
@@ -163,3 +168,109 @@
     }
 }
 
+.background-animation-setting-container {
+    overflow: hidden;
+    position:absolute;
+    left: 2%;
+	width: 15%;
+    top: 0%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.background-animation-setting-img {
+    width: 100%;
+    height: auto;
+    animation:transform-setting 34s ease-out infinite;
+}
+
+@keyframes transform-setting {
+    from {
+		transform:translateY(-100vh) rotate(0deg);
+    }
+    to {
+        transform:translateY(100vh) rotate(360deg);
+    }
+}
+
+.background-animation-wrench-container {
+    overflow: hidden;
+    position: absolute;
+    left: 84%;
+    width: 15%;
+    top: 0%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+    text-align: center;
+}
+
+.background-animation-wrench-img {
+    width: 50%;
+    height: auto;
+    animation: transform-wrench 30s ease-out infinite;
+}
+
+@keyframes transform-wrench {
+    from {
+		transform:translateY(-300vh) rotate(0deg);
+    }
+    to {
+        transform:translateY(100vh) rotate(1000deg);
+    }
+}
+
+.background-animation-robot-container {
+    overflow: hidden;
+    position: absolute;
+    left: 60%;
+    width: 28%;
+    top: 0%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+    text-align: center;
+}
+
+.background-animation-robot-img {
+    width: 50%;
+    height: auto;
+    animation: transform-robot 48s ease-out infinite;
+}
+
+@keyframes transform-robot {
+    from {
+		transform:translateY(-100vh) rotate(0deg);
+    }
+    to {
+        transform:translateY(100vh) rotate(360deg);
+    }
+}
+
+.background-animation-debug-container {
+    overflow: hidden;
+    position: absolute;
+    left: 15%;
+    width: 28%;
+    top: 0%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+    text-align: center;
+}
+
+.background-animation-debug-img {
+    width: 70%;
+    height: auto;
+    animation: transform-debug 60s ease-out infinite;
+}
+
+@keyframes transform-debug {
+    from {
+		transform:translateY(-30vh) rotate(0deg);
+    }
+    to {
+        transform:translateY(100vh) rotate(180deg);
+    }
+}

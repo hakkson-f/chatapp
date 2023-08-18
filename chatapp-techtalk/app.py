@@ -374,7 +374,7 @@ def updataPassword(passhash):
     return render_template('password-change.html', user=user)
 
 
-#プロフィールページの表示
+#マイアカウントの表示
 @app.route('/profile')
 def profile():
     uid = session.get("uid")
@@ -383,10 +383,10 @@ def profile():
     else:
         user = dbConnect.getUsername(uid)
     
-    return render_template('/profile.html', user=user)
+    return render_template('/profile-2.html', user=user)
 
 
-#その他のプロフィールページの表示
+#その他のアカウントの表示
 @app.route('/profile-other')
 def profileother():
     uid = session.get("uid")
@@ -395,7 +395,7 @@ def profileother():
     else:
         user = dbConnect.getUsernameOther(uid)
     
-    return render_template('/profile-other.html', user=user)
+    return render_template('/profile-other-2.html', user=user)
 
 
 @app.route('/test')

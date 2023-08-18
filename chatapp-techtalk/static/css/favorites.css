@@ -1,3 +1,7 @@
+.layout-contents-container {
+    top: 45%;
+}
+
 .block-contets-container {
     height: 90%;
     width: 80%;
@@ -11,143 +15,10 @@
     justify-content: flex-start;
 }
 
-.add-channels-box {
-    height: 15%;
-    width: 60%;
-    margin-top: 10px;
+.user-name-label{
+    font-size: 1.6rem;
+    margin-left: 5%;
 }
-
-.add-channels-btn {
-    display: flex;
-    align-items: center;
-    border: none;
-    outline: none;
-    background-color: transparent;
-}
-
-.add-channels-btn:hover {
-    cursor: pointer;
-}
-
-.channels-form-input:hover .add-channels-btn {
-    opacity: 0;
-}
-
-.add-channels-btn-icon {
-    font-size: 1.8rem;
-    margin-left: 10px;
-    margin-right: 15px;
-    color: #CFE8FF;
-    transition: color .3s linear;
-}
-
-.add-channels-btn:hover .add-channels-btn-icon {
-    color: #343c78;
-}
-.add-channels-btn-text {
-    font-size: 1.3rem;
-    color: #CFE8FF;
-    transition: color .3s linear;
-}
-
-.add-channels-btn:hover .add-channels-btn-text {
-    color: #343c78;
-}
-
-.search-channels-form {
-    display: flex;
-    align-items: center;
-    height: 15%;
-    width: 60%;
-    position: relative;
-}
-
-.channels-form-input {
-    height: 80%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-}
-
-.channels-form-input:hover {
-    cursor: text;
-}
-
-.channels-form-input::placeholder {
-    font-size: 1.1rem;
-    color: #c5d6e7;
-    transition: color .15s linear;
-}
-
-.channels-form-input:hover:-webkit-input-placeholder {
-    color: #343c78;
-}
-
-.channels-form-input:hover::-moz-placeholder {
-    color: #343c78;
-}
-
-.channels-form-input:hover::-ms-input-placeholder {
-    color: #343c78;
-}
-
-.channels-form-input:hover::placeholder {
-    color: #343c78;
-}
-
-.channels-form-input:focus:-webkit-input-placeholder {
-    color: transparent;
-}
-
-.channels-form-input:focus::-moz-placeholder {
-    color:transparent
-}
-
-.channels-form-input:focus::-ms-input-placeholder {
-    color: transparent;
-}
-
-.channels-form-input:focus::placeholder {
-    color: transparent;
-}
-
-.channel-form-serchbtn {
-    height: 80%;
-    width: 14%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    background-color: #CFE8FF;
-    transition: background-color .3s linear;
-}
-
-.channel-form-serchbtn:hover {
-    cursor: pointer;
-    background-color: #4A55A2;
-}
-
-.search-channels-btn-icon {
-    font-size: 1.5rem;
-    color: #4A55A2;
-    transition: color .3s linear;
-}
-
-.channel-form-serchbtn:hover .search-channels-btn-icon {
-    color: #CFE8FF;
-}
-
-.channel-form-serchbtn:focus .search-channels-btn-icon {
-    transform: translate(0px);
-}
-
 
 .channels-list-box {
     width: 60%;

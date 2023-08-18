@@ -17,12 +17,12 @@
                 {{ channel.name }}
             </h1>
             {% if channel.abstract is not none %}
-                <div id="channel-description">　　説明：{{ channel.abstract }}　　</div>
+                <div id="channel-description">{{ channel.abstract }}</div>
             {% endif %}
             {% if uid == channel.uid %}
-                <form action="/update-channel" method="post">
+                <form action="/update-channel/{{ channel.id }}" class="update-channel-box">
                     <input type="hidden" value="{{ channel.id }}" name="cid">
-                    <button type="image" id="update-channel-btn"  class="secondsidebar-btn" name="channel-id" value="{{ channel.id }}">編集
+                    <button type="image" id="update-channel-btn"  class="update-channel-btn" name="channel-id" value="{{ channel.id }}">編集
                         <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
                     </button>
                 </form>
@@ -31,40 +31,49 @@
         </div>
         <div class="layout-sidebar-container">
             <div class="block-sidebar-icon">
-                <img class="side-bar-rogo" src="../static/icon/key_icon.png">
+                <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
                 <div class="side-bar-middle-buttons">
                     <a href="/profile">
-                        <img class="sidebar-icon-profile icon sidebar-icon-clickable" src="../static/icon/user_icon.png">
-                    </a>
-                    <a href="/" style="display: inline-block">
-                        <img class="sidebar-icon-search icon sidebar-icon-clickable" src="../static/icon/search_icon.png">
+                        <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
                     </a>
                     <a href="/">
+                        <img class="sidebar-icon-search  sidebar-icon-clickable" src="../static/icon/search_icon.png">
+                    </a>
+                    <a href="/favorites">
                         <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
-                    </a>                                      
+                    </a>                                  
                 </div>
-                <a href="/logout" style="display: inline-block">
-                    <img class="sidebar-icon-logout icon sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+                <a href="/logout">
+                    <img class="sidebar-icon-logout sidebar-icon-clickable" src="../static/icon/logout_icon.png">
                 </a>
             </div>
         </div>
         <div class="layout-secondsidebar-container">
             <div class="box-secondsidebar">
-                <a href="/detail/{{ channel.id }}">
-                    <p class="secondsidebar-channel-name">{{ channel.name }}</p>
-                </a>
-                    <!-- もしuidとチャンネル作成者が同じならタイトル、説明を編集可能にする -->
-                
+                <ul class="channnel-list-wrapper">
+                                
+                    {% if favorites|length == 0 %}
+                    <h5 class="channel-list">お気に入りチャンネルはまだありません</h5>
+        
+                    {% else %}
+                    {% for favorite in favorites %}
+                    <li class="channel-list">
+                        <a href="/detail/{{ favorite.id }}" class="list-channel-title">{{ favorite.name }}</a>
+                        
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
             </div>
         </div>
-
-        <div class="layout-contents-container" id="layout-contents-container">
-           
-                <div class="search-messages">
+        
+            <div class="layout-contents-container" id="layout-contents-container">
+            
+                <!-- <div class="search-messages">
                     <label for="search-messages">本文検索</label>
                     <input type="text" id="search-messages">
                     <button type="button">検索</button>
-                </div>
+                </div> -->
 
                 {% if messages|length > 0 %} {% for message in messages %} {% if message.uid == uid %} 
                 <p class="user-name message-right">＠{{ message.user_name }}</p>     
@@ -107,8 +116,21 @@
                 </div>
                 {% endif %}
 
-            
-        </div>
+                <!-- <div class="background-animation-setting-container">
+                    <img class="background-animation-setting-img" src="../static/icon/setting-icon.png">
+                </div>
+                <div class="background-animation-wrench-container">
+                    <img class="background-animation-wrench-img" src="../static/icon/wrench_icon.png">
+                </div>
+                <div class="background-animation-robot-container">
+                    <img class="background-animation-robot-img" src="../static/icon/robot_icon.png">
+                </div>
+                <div class="background-animation-debug-container">
+                    <img class="background-animation-debug-img" src="../static/icon/debug-icon.png">
+                </div> -->
+
+            </div>
+        
         <div class="layout-send-container">
             <div class="block-send-contaner">
                 <form

@@ -148,8 +148,11 @@ def detail(cid):
     cid = cid
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
+    favorites = dbConnect.getFavoriteChannelAll(uid)
+    if favorites != None:
+            favorites=favorites[::-1]
 
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return render_template('detail.html', messages=messages, channel=channel, favorites=favorites, uid=uid)
 
 
 #チャンネル追加ページの表示
@@ -181,8 +184,35 @@ def add_channel():
 
 
 #チャンネル情報の更新ページの表示
-@app.route('/update-channel')
+@app.route('/update-channel/<cid>')
+def updatechannelopen(cid):
+    
+    print(cid)
+    channel = dbConnect.getChannelById(cid)
+    # print(channel)
+    return render_template('/update-channel.html', channel=channel)
+
+#チャンネル情報の更新処理
+@app.route('/update-channel', methods=['POST'])
 def updatechannel():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        cid = request.form.get('cid')
+        newChannelName = request.form.get('channelTitle')
+        newChannelDescription = request.form.get('channelDescription')
+
+        dbConnect.updateChannel(uid, newChannelName, newChannelDescription, cid)
+        
+        channel = dbConnect.getChannelById(cid)
+        messages = dbConnect.getMessageAll(cid)
+        favorites = dbConnect.getFavoriteChannelAll(uid)
+        if favorites != None:
+                favorites=favorites[::-1]
+
+        return render_template('detail.html', messages=messages, channel=channel, favorites=favorites, uid=uid)
+
     cid = request.form.get('cid')
     print(cid)
     channel = dbConnect.getChannelById(cid)
@@ -193,7 +223,6 @@ def updatechannel():
 @app.route('/delete_channel', methods=['POST'])
 def deletechannel():
     uid = session.get("uid")
-    print(uid)
     if uid is None:
         return redirect('/login')
     else:

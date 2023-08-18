@@ -260,8 +260,8 @@ class dbConnect:
         try:
             conn = db.getConnection()
             cur = conn.cursor()
-            sql = "SELECT * FROM channels WHERE id=%s;"
-            cur.execute(sql, (cid))
+            sql = "SELECT * FROM channels WHERE id="+cid+";"
+            cur.execute(sql)
             channel = cur.fetchone()
             return channel
         except Exception as e:

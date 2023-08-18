@@ -1,8 +1,8 @@
 .block-contets-container {
-    height: 85%;
+    height: 90%;
     width: 80%;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -68,7 +68,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    border: 2px solid #31396e;
+    border: none;
     outline: none;
     border-radius: 5px;
 }
@@ -115,11 +115,11 @@
     color: transparent;
 }
 
-.channel-form-searchbtn {
+.channel-form-serchbtn {
     height: 80%;
     width: 14%;
     position: absolute;
-    top: 2px;
+    top: 0;
     right: 0;
     z-index: 1;
     border: none;
@@ -204,20 +204,26 @@
 }
 
 .list-chanel-star-btn  {
-    width: 11%;
+    width: 20%;
     height: 60%;
     position: absolute;
     top: 50%;
     right: 13.6%;
-    transform: translateY(-50%);
-    border: none;
-    outline: none;
-    background-color: transparent;
+    transform: translateY(-45%);
+    border-radius: 5px;
+    background: linear-gradient(
+
+    15deg,
+
+    #7baedd,
+    #ddedfc
+    );
+    transition: background .2s linear;
     cursor: pointer;
 }
 
 .list-chanel-star-icon {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #878fc8;
 }
 
@@ -236,7 +242,7 @@
 }
 
 .list-chanel-delite-icon {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #2e3464;
 }
 

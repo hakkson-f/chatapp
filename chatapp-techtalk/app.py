@@ -221,7 +221,7 @@ def favorites():
         if channels != None:
             channels=channels[::-1]
         username = dbConnect.getUsername(uid)["user_name"]
-    return render_template('favorites.html', channels=channels ,username=username, uid=uid)
+    return render_template('favorites-2.html', channels=channels ,username=username, uid=uid)
 
 
 #お気に入りチャンネルの登録
@@ -253,7 +253,7 @@ def deletefavoriteChannel():
         if channels != None:
             channels[::-1]
         username = dbConnect.getUsername(uid)["user_name"]
-        return render_template('favorites.html', channels=channels ,username=username, uid=uid)
+        return render_template('favorites-2.html', channels=channels ,username=username, uid=uid)
 
 
 #チャンネル一覧からお気に入りチャンネル解除

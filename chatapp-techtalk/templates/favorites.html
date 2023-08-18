@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>チャンネル一覧</title>
-    <link href="../static/css/layout.css" rel="stylesheet">
-    <link href="../static/css/index.css" rel="stylesheet">
+    <title>お気に入り</title>
+    <link rel="icon" href="../static/icon/favicon-rogo.svg" type="image/svg+xml">
+    <link href="../static/css/layout-2.css" rel="stylesheet">
+    <link href="../static/css/index-2.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/50bd2dd3b6.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="layout-container">
@@ -19,23 +21,24 @@
         </div>
         <div class="layout-sidebar-container">
             <div class="block-sidebar-icon">
-                <img class="side-bar-rogo" src="../static/icon/key_icon.png">
+                <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
                 <div class="side-bar-middle-buttons">
                     <a href="/profile">
-                        <img class="sidebar-icon-profile icon sidebar-icon-clickable" src="../static/icon/user_icon.png">
+                        <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
                     </a>
-                    <a href="/" style="display: inline-block">
-                        <img class="sidebar-icon-search icon sidebar-icon-clickable" src="../static/icon/search_icon.png">
+                    <a href="/">
+                        <img class="sidebar-icon-search  sidebar-icon-clickable" src="../static/icon/search_icon.png">
                     </a>
-                    <a href="/favorsites">
+                    <a href="/favorites">
                         <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
-                    </a>                                       
+                    </a>                                  
                 </div>
-                <a href="/logout" style="display: inline-block">
-                    <img class="sidebar-icon-logout icon sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+                <a href="/logout">
+                    <img class="sidebar-icon-logout sidebar-icon-clickable" src="../static/icon/logout_icon.png">
                 </a>
             </div>
         </div>
+        <div class="layout-center-container">
             <div class="user-name-label">
                 {{ username }} さんのお気に入りチャンネル
             </div>

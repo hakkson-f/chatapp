@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>サーバーエラー</title>
-  <link href="../static/css/layout.css" rel="stylesheet">
+  <link href="../static/css/layout-2.css" rel="stylesheet">
   <link href="{{ url_for('static',filename='../static/css/error.css') }}" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +20,22 @@
     </div>
     <div class="layout-sidebar-container">
       <div class="block-sidebar-icon">
-          <img class="side-bar-rogo" src="../static/icon/key_icon.png">
-          <dev class="side-bar-middle-buttons">
-              <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
-              <img class="sidebar-icon-search sidebar-icon-clickable" src="../static/icon/search_icon.png">
-          </dev>
-          <img class="sidebar-icon-rogout sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+        <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
+        <div class="side-bar-middle-buttons">
+            <a href="/profile">
+                <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
+            </a>
+            <a href="/">
+                <img class="sidebar-icon-search  sidebar-icon-clickable" src="../static/icon/search_icon.png">
+            </a>
+            <a href="/favorites">
+                <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
+            </a>                                  
+        </div>
+        <a href="/logout">
+            <img class="sidebar-icon-logout sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+        </a>
+        
       </div>
     </div>
     <div class="layout-contents-container">

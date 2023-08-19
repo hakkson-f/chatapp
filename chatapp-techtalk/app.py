@@ -40,8 +40,8 @@ def index():
         return redirect('/login')
     else:
         channels = dbConnect.getChannelAll(uid)
-        if len(channels) != 0:
-            channels.reverse()
+        if channels != None:
+            channels=channels[::-1]
         username = dbConnect.getUsername(uid)["user_name"]
     return render_template('index-2.html', channels=channels ,username=username, uid=uid)
 
@@ -55,8 +55,8 @@ def searchChannels():
     else:
         channel_name=request.form.get('search-channels')
         channels = dbConnect.searchChannels(uid,channel_name)
-        if len(channels) != 0:
-            channels.reverse()
+        if channels != None:
+            channels=channels[::-1]
         username = dbConnect.getUsername(uid)["user_name"]
             
     return render_template('search-channel-2.html', channels=channels ,username=username, uid=uid)

@@ -82,6 +82,7 @@
 
 
 .layout-contents-container {
+    all: unset;
     grid-column: 3 /5;
     grid-row: 2 /4;
     overflow: auto;

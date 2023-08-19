@@ -48,7 +48,7 @@
                             </button>
                         </div>
                         <form class="search-channels-form" method="post" action="/search-channels">
-                            <input type="text" class="channels-form-input" name="search-channels" id="search-channels" placeholder="　チャンネル検索">
+                            <input type="text" class="channels-form-input" name="search-channels" id="search-channels" placeholder="チャンネル検索">
                             <button type="submit" class="channel-form-searchbtn">
                                 <i class="fa-solid fa-magnifying-glass search-channels-btn-icon"></i>
                             </button>
@@ -80,12 +80,12 @@
                                     </form>
                                     {% endif %}
                                     {% if uid == channel.uid %}
-                                    <form action="/delete_channel" method="post" class="delete-channel">
+                                    
                                         <input type="hidden" value="{{ channel.id}}" name="cid">
                                         <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.id }}" class="list-delete-channel-btn">
                                             <i class="fa-solid fa-trash-can list-chanel-delite-icon"></i>
                                         </button>
-                                    </form>
+                                    
                                     {% endif %}
                                     
                                 </li>

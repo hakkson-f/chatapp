@@ -18,19 +18,23 @@ addcloseModal.addEventListener('click', () => {
 })
 
 const deleteChaneneModal = document.querySelector('#layout-modal-delete-container')
-const deleteOpenModal = document.querySelector('.list-delete-channel-btn')
+const deleteOpenModal = document.querySelectorAll('.list-delete-channel-btn')
+console.log(deleteOpenModal)
 const deletecloseModal = document.querySelector('#modal-delete-close-btn')
-
-deleteOpenModal.addEventListener('click', () => {
-    deleteChaneneModal.showModal();
-    deleteChaneneModal.style.display='block';
-    deleteChaneneModal.style.position="float";
-    deleteChaneneModal.style.top="50%";
-    deleteChaneneModal.style.left="50%";
-    deleteChaneneModal.style.transform="translate(-50%, -50%)";
-})
 
 deletecloseModal.addEventListener('click', () => {
     deleteChaneneModal.style.display='none'
     deleteChaneneModal.close();
 })
+
+deleteOpenModal.forEach(function(target){
+    target.addEventListener('click', () => {
+        deleteChaneneModal.showModal();
+        deleteChaneneModal.style.display='block';
+        deleteChaneneModal.style.position="float";
+        deleteChaneneModal.style.top="50%";
+        deleteChaneneModal.style.left="50%";
+        deleteChaneneModal.style.transform="translate(-50%, -50%)";
+        })
+})
+

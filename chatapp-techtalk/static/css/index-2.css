@@ -229,6 +229,7 @@
     outline: none;
     background-color: transparent;
     cursor: pointer;
+    z-index: 10;
 }
 
 @keyframes bounce {

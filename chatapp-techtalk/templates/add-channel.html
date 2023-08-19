@@ -51,6 +51,15 @@
                     name="channelDescription"
                     />
                 </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li class="flash-message">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
                 <a href="">
                 <button class="contents-input-decision">決定</button>
                 </a>

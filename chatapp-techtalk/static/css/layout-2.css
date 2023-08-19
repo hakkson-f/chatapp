@@ -4,6 +4,16 @@
     font-family: 'Zen Kaku Gothic New', sans-serif;
 }
 
+ul >li{
+    list-style: none;
+}
+
+.flash-message{
+    color: rgba(246, 0, 0, 0.594);
+    font-size: large;
+    font-weight: bold;
+}
+
 .layout-container {
     display: grid;
     width: 100vw;

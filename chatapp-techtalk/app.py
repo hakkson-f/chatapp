@@ -88,7 +88,7 @@ def userLogin():
                 session['uid'] = user["uid"]
                 #ログインメール通知
                 msg = Message('ログイン通知', recipients=[user['email']])
-                msg.body = ""+user['user_name']+"さん、TechTalkへのログインを検知しました。\n" 
+                msg.body = ""+user['user_name']+"さん、TechTalkへのログインがありました。\n" 
                 mail.send(msg)
 
                 return redirect('/')
@@ -164,23 +164,22 @@ def addchannel():
 @app.route('/add-channel', methods=['POST'])
 def add_channel():
     uid = session.get('uid')
-    # return render_template('/add-channel.html', uid=uid)
     
     if uid is None:
         return redirect('login')
     
     channel_name = request.form.get('channelTitle')
     channel = dbConnect.getChannelByName(channel_name)
+    if channel_name == '':
+        flash('チャンネル名が空欄のチャンネルは作成できません。')
+        return redirect('/')
     if channel == None:
         channel_description = request.form.get('channelDescription')
         dbConnect.addChannel(uid, channel_name, channel_description)
         return redirect('/')
     else:
-        error = '既に同じ名前のチャンネルが存在しています'
-        return render_template('error/error.html', error_message=error)
-    
-    
-    # retusrn render_template('/add-channel.html')
+        flash('既に同じ名前のチャンネルが存在していたため作成できませんでした。')
+        return redirect('/')
 
 
 #チャンネル情報の更新ページの表示
@@ -203,21 +202,34 @@ def updatechannel():
         newChannelName = request.form.get('channelTitle')
         newChannelDescription = request.form.get('channelDescription')
 
-        dbConnect.updateChannel(uid, newChannelName, newChannelDescription, cid)
+        channel = dbConnect.getChannelByName(newChannelName)
+
+        if newChannelName == '':
+            flash('空のフォームがあります')
+            channel = dbConnect.getChannelById(cid)
+            return render_template('/update-channel.html', channel=channel)
         
-        channel = dbConnect.getChannelById(cid)
-        messages = dbConnect.getMessageAll(cid)
-        favorites = dbConnect.getFavoriteChannelAll(uid)
-        if favorites != None:
-                favorites=favorites[::-1]
+        if channel == None:
+            dbConnect.updateChannel(uid, newChannelName, newChannelDescription, cid)
+            
+            channel = dbConnect.getChannelById(cid)
+            messages = dbConnect.getMessageAll(cid)
+            favorites = dbConnect.getFavoriteChannelAll(uid)
+            if favorites != None:
+                    favorites=favorites[::-1]
 
-        return render_template('detail.html', messages=messages, channel=channel, favorites=favorites, uid=uid)
+            return render_template('detail.html', messages=messages, channel=channel, favorites=favorites, uid=uid)
+        
+        else:
+            flash('既に同じ名前のチャンネルが存在しています')
+            channel = dbConnect.getChannelById(cid)
+            return render_template('/update-channel.html', channel=channel)
 
-    cid = request.form.get('cid')
-    print(cid)
-    channel = dbConnect.getChannelById(cid)
-    print(channel)
-    return render_template('/update-channel.html', channel=channel)
+    # cid = request.form.get('cid')
+    # print(cid)
+    # channel = dbConnect.getChannelById(cid)
+    # print(channel)
+    # return render_template('/update-channel.html', channel=channel)
     
 #チャンネル削除機能
 @app.route('/delete-channel/', methods=['POST'])
@@ -356,7 +368,7 @@ def passwordChangeUrlMail():
     else:
     #パスワード再設定用メール通知
         msg = Message('パスワード再設定用URL', recipients=[sendemail])
-        msg.body = ""+user['user_name']+"さん、TechTalkにアクセスしてパスワード再設定をしてください。\n AWS用： https://tech-talk-chat.net:5000/password-change/"+ user['password'] +" \n ローカル用： http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
+        msg.body = ""+user['user_name']+"さん、TechTalkにアクセスしてパスワード再設定をしてください。\n AWS用： https://tech-talk-chat.net/password-change/"+ user['password'] +" \n ローカル用： http://127.0.0.1:5000/password-change/"+ user['password'] +" にアクセスしてください。\n" 
         mail.send(msg)
 
         flash('メールを送りました') 
@@ -395,7 +407,7 @@ def updataPassword(passhash):
         session['uid'] = UserId
         #パスワード再設定通知
         msg = Message('パスワード再設定通知', recipients=[user['email']])
-        msg.body = ""+user['user_name']+"さん、TechTalkのパスワード再設定を検知しました。\n" 
+        msg.body = ""+user['user_name']+"さん、ご利用のアカウントでTechTalkのパスワード再設定がありました。\n" 
         mail.send(msg)
 
         return redirect('/')

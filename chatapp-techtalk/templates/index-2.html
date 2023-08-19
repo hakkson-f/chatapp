@@ -43,6 +43,15 @@
             <div class="layout-center-container">
                 <div class="layout-contents-container">
                     <div class="block-contets-container">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul>
+                            {% for message in messages %}
+                                <li class="flash-message">{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {% endwith %}
                         <div class="add-channels-box">
                             <button class="add-channels-btn">
                                 <i class="fa-solid fa-plus add-channels-btn-icon"></i>
@@ -119,12 +128,12 @@
                     <div class="modal-contents-input-wrapper">
                         <input class="contents-input-group-name"
                         type="text"
-                        placeholder="グループ名"
+                        placeholder="チャンネル名"
                         name="channelTitle" 
                         />
                         <input class="contents-input-group-description"
                         type="text"
-                        placeholder="グループの説明"
+                        placeholder="チャンネルの説明"
                         name="channelDescription"
                         />
                     </div>

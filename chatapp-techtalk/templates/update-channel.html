@@ -41,16 +41,25 @@
                 <div class="contents-input">
                     <input class="contents-input-group-name"
                     type="text"
-                    placeholder="グループ名"
+                    placeholder="チャンネル名"
                     name="channelTitle" 
                     autofocus
                     />
                     <input class="contents-input-group-description"
                     type="text"
-                    placeholder="グループの説明"
+                    placeholder="チャンネルの説明"
                     name="channelDescription"
                     />
                 </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li class="flash-message">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
                 <a >
                     <input type="hidden" value="{{ channel.id }}" name="cid">
                     <button class="contents-input-decision" name="channel-id" value="{{ channel.id }}">更新</button>

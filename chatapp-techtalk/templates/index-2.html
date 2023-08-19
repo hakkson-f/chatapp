@@ -82,12 +82,12 @@
                                     </form>
                                     {% endif %}
                                     {% if uid == channel.uid %}
-                                    <form action="/delete_channel" method="post" class="delete-channel">
+                                    
                                         <input type="hidden" value="{{ channel.id}}" name="cid">
                                         <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.id }}" class="list-delete-channel-btn">
                                             <i class="fa-solid fa-trash-can list-chanel-delite-icon"></i>
                                         </button>
-                                    </form>
+                                    
                                     {% endif %}
                                     
                                 </li>

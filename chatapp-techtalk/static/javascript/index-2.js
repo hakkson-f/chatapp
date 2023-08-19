@@ -22,6 +22,8 @@ const deleteOpenModal = document.querySelectorAll('.list-delete-channel-btn')
 console.log(deleteOpenModal)
 const deletecloseModal = document.querySelector('#modal-delete-close-btn')
 
+const deleteChannel = document.querySelector('#delete-channel-btn')
+
 deletecloseModal.addEventListener('click', () => {
     deleteChaneneModal.style.display='none'
     deleteChaneneModal.close();
@@ -29,6 +31,13 @@ deletecloseModal.addEventListener('click', () => {
 
 deleteOpenModal.forEach(function(target){
     target.addEventListener('click', () => {
+        console.log(target)
+        var input = target;
+        // console.log(input)
+        var value = input.getAttribute('value');
+        // console.log(value)
+        deleteChannel.value = value
+        
         deleteChaneneModal.showModal();
         deleteChaneneModal.style.display='block';
         deleteChaneneModal.style.position="float";

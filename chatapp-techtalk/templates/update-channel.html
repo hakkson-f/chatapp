@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>チャンネル情報を更新</title>
-    <link href="../static/css/layout.css" rel="stylesheet">
+    <title>チャンネル更新</title>
+    <link href="../static/css/layout-2.css" rel="stylesheet">
     <link href="../static/css/add-channel.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,13 +13,17 @@
 <body>
     <div class="layout-container">
         <div class="layout-header-container">
-            <h1 class="header-title">
-                チャンネル情報を更新
-            </h1>
+            <div class="header-box">
+                <h1 class="header-title">
+                    チャンネル更新
+                </h1>
+            </div>
         </div>
         <div class="layout-sidebar-container">
             <div class="block-sidebar-icon">
-                <img class="side-bar-rogo" src="../static/icon/key_icon.png">
+                <a href="/">
+                    <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
+                </a>
                 <div class="side-bar-middle-buttons">
                     <a href="/profile">
                         <img class="sidebar-icon-profile icon sidebar-icon-clickable" src="../static/icon/user_icon.png">
@@ -27,7 +31,7 @@
                     <a href="/" style="display: inline-block">
                         <img class="sidebar-icon-search icon sidebar-icon-clickable" src="../static/icon/search_icon.png">
                     </a>
-                    <a href="/">
+                    <a href="/favorites">
                         <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
                     </a> 
                 </div>
@@ -36,36 +40,38 @@
                 </a>
             </div>
         </div>
-        <div class="layout-contents-container">
-            <form class="contents-form" action="/update-channel" method="post" >
-                <div class="contents-input">
-                    <input class="contents-input-group-name"
-                    type="text"
-                    placeholder="チャンネル名　例→　講義：python基礎２"
-                    name="channelTitle" 
-                    autofocus
-                    />
-                    <input class="contents-input-group-description"
-                    type="text"
-                    placeholder="チャンネルの説明　最大50文字"
-                    name="channelDescription"
-                    />
-                </div>
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul>
-                    {% for message in messages %}
-                        <li class="flash-message">{{ message }}</li>
-                    {% endfor %}
-                    </ul>
-                {% endif %}
-                {% endwith %}
-                <a >
-                    <input type="hidden" value="{{ channel.id }}" name="cid">
-                    <button class="contents-input-decision" name="channel-id" value="{{ channel.id }}">更新</button>
-                </a>
-                
-            </form>
+        <div class="layout-center-container">
+            <div class="layout-contents-container">
+                <form class="contents-form" action="/update-channel" method="post" >
+                    <div class="contents-input">
+                        <input class="contents-input-group-name"
+                        type="text"
+                        placeholder="チャンネル名　例→　講義：python基礎２"
+                        name="channelTitle" 
+                        autofocus
+                        />
+                        <input class="contents-input-group-description"
+                        type="text"
+                        placeholder="チャンネルの説明　最大50文字"
+                        name="channelDescription"
+                        />
+                    </div>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                        {% for message in messages %}
+                            <li class="flash-message">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% endwith %}
+                    <a >
+                        <input type="hidden" value="{{ channel.id }}" name="cid">
+                        <button class="contents-input-decision" name="channel-id" value="{{ channel.id }}">更新</button>
+                    </a>
+                    
+                </form>
+            </div>
         </div>
     </div>
 </body>

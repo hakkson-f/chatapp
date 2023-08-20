@@ -215,11 +215,12 @@
     min-width: 210px;
     height: 95%;
     background-color: #f4f4f4;
-    font-size: large;
+    font-size: medium;
+    padding-left: 5%;
 }
 
 .send-text::placeholder {
-    font-size: large;
+    font-size: medium;
 }
 
 .send-btn-box {

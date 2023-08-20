@@ -59,6 +59,15 @@
               <span>パスワード（再入力）</span>
               <i></i>
             </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li class="flash-message">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
 
             <div class="registration-pagechange">
               <button class="registration-button-signup">登録する</button>
@@ -66,15 +75,7 @@
             </div>
           </div>
         </form>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-            {% for message in messages %}
-                <li class="flash-message">{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-        {% endwith %}
+        
       </div>
       <div class="background-animation-setting-container">
         <img class="background-animation-setting-img" src="../static/icon/setting-icon.png">

@@ -12,6 +12,26 @@
     background-color: #CFE8FF;
 }
 
+.layout-logo-container {
+    position: absolute;
+    z-index: 1;
+    top: 8%;
+    left: 15%;
+    display: flex;
+    align-items: center;
+    height: 8%;
+}
+
+.logo-icon {
+    height: 100%;
+}
+
+.logo-text {
+    font-size: 2rem;
+    color: #343c78
+}
+
+
 .layout-contents-container{
     background-color: #7895CB;
     display: flex;
@@ -108,7 +128,7 @@
 .registration-input-box > input:not(:placeholder-shown) ~ i
 {
     height: 37px;
-    background-color: #CFE8FF;
+    background-color: white;
 }
 
 .registration-pagechange{

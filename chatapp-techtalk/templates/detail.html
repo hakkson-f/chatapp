@@ -6,9 +6,11 @@
     <title>チャットページ</title>
     <link href="../static/css/layout-2.css" rel="stylesheet">
     <link href="../static/css/detail.css" rel="stylesheet">
+    <link rel="icon" href="../static/icon/favicon-rogo.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/50bd2dd3b6.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="layout-container">
@@ -142,15 +144,14 @@
                     name="newMessageForm"
                     onsubmit="AutoLink()"
                 >
-                    <textarea name="message" class="send-text" placeholder="メッセージ入力欄(URL入力の際は、直後にスペースを入れる)" autofocus id="message" cols="50"></textarea>
+                    <textarea name="message" class="send-text" placeholder="メッセージ入力欄(URL入力の際は、直後にスペースを入れる)" id="message" cols="50"></textarea>
                     <input type="hidden" name="cid" value="{{ channel.id }}" />
                     <div class="send-btn-box">
                         <button type="image" id="add-message-button" onclick="AutoLink()">
-                            <img class="send-btn-icon" src="../static/icon/send_icon.png">
+                            <i class="fa-solid fa-paper-plane send-btn-icon"></i>
                         </button>
                     </div>
-                    <textarea type="text" id="url-message" name="url-message"></textarea>
-                       
+                    <textarea type="text" id="url-message" name="url-message"></textarea>                  
                 </form>
             </div>
         </div>

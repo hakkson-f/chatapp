@@ -232,7 +232,7 @@ def updatechannel():
     # return render_template('/update-channel.html', channel=channel)
     
 #チャンネル削除機能
-@app.route('/delete-channel/', methods=['POST'])
+@app.route('/delete-channel', methods=['POST'])
 def deletechannel():
     uid = session.get("uid")
     if uid is None:

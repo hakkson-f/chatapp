@@ -18,6 +18,7 @@ ul >li{
     display: grid;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     grid-template-columns: 0.33fr 0.67fr 4fr 1fr;
     grid-template-rows: 0.6fr 0.4fr 3fr 1fr;
 }

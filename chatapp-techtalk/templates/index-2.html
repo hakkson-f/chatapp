@@ -17,13 +17,15 @@
             <div class="layout-header-container">
                 <div class="header-box">
                     <h1 class="header-title">
-                        チャンネル名一覧
+                        チャンネル一覧
                     </h1>
                 </div>
             </div>
             <div class="layout-sidebar-container">
                 <div class="block-sidebar-icon">
-                    <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
+                    <a href="/">
+                        <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
+                    </a>
                     <div class="side-bar-middle-buttons">
                         <a href="/profile">
                             <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
@@ -121,19 +123,19 @@
         <dialog class="layout-modal-container" id="layout-modal-add-container">
             <div class="box-modal-container" id="box-modal-add-container">
                 <div class="modal-title-header">
-                    <h1 class="modal-title">チャンネル新規追加</h1>
+                    <h1 class="modal-title">新規追加</h1>
                     <button class="modal-close-btn" id="modal-add-close-btn">&times</button>
                 </div>
                 <form class="modal-contents-form" action="/add-channel" method="post" >
                     <div class="modal-contents-input-wrapper">
                         <input class="contents-input-group-name"
                         type="text"
-                        placeholder="チャンネル名"
+                        placeholder="チャンネル名　例→　講義：python基礎２"
                         name="channelTitle" 
                         />
                         <input class="contents-input-group-description"
                         type="text"
-                        placeholder="チャンネルの説明"
+                        placeholder="チャンネルの説明　最大50文字"
                         name="channelDescription"
                         />
                     </div>

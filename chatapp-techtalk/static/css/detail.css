@@ -103,6 +103,7 @@
 
 .message-module {
     overflow: visible;
+    overflow-wrap:break-word;
     width: 48%;
     min-width: 200px;
     font-size: 20px;
@@ -215,11 +216,13 @@
     min-width: 210px;
     height: 95%;
     background-color: #f4f4f4;
-    font-size: large;
+    font-size: medium;
+    padding-left: 5%;
+    overflow-wrap:break-word;
 }
 
 .send-text::placeholder {
-    font-size: large;
+    font-size: medium;
 }
 
 .send-btn-box {

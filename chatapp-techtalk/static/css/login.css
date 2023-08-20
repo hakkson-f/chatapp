@@ -4,12 +4,29 @@
 }
 
 .layout-container {
-    display: grid;
     width: 100vw;
     height: 100vh;
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 1fr 4fr 1fr;
     background-color: #CFE8FF;
+}
+
+.layout-logo-container {
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    left: 15%;
+    display: flex;
+    align-items: center;
+    height: 8%;
+}
+
+.logo-icon {
+    margin-right: px;
+    height: 100%;
+}
+
+.logo-text {
+    font-size: 2rem;
+    color: #343c78
 }
 
 .layout-contents-container{
@@ -113,7 +130,7 @@
 .registration-input-box > input:not(:placeholder-shown) ~ i
 {
     height: 44px;
-    background-color: #CFE8FF;
+    background-color: white;
 }
 
 .registration-pagechange{

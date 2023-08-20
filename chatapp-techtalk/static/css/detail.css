@@ -203,6 +203,7 @@
 .send-box {
     height: 95%;
     width: 98%;
+    min-width: 250px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -211,13 +212,19 @@
 
 .send-text {
     width: 70%;
+    min-width: 210px;
     height: 95%;
     background-color: #f4f4f4;
-    font-size: larger;
+    font-size: large;
+}
+
+.send-text::placeholder {
+    font-size: large;
 }
 
 .send-btn-box {
     width: 6%;
+    min-width: 40px;
     height: 90%;
     margin-left: 0.5%;
     background-color: azure;
@@ -228,6 +235,7 @@
 
 .send-btn-box > button{
     height: 100%;
+    min-width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;

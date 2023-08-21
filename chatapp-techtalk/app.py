@@ -505,6 +505,8 @@ def deleteAllClear():
     conn.commit()
     cur.close()
 
+    return redirect('/login')
+
 
 
 @app.errorhandler(404)

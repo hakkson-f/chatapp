@@ -350,11 +350,13 @@
 }
 
 .contents-input-group-name {
-    height: 30%;   
+    height: 30%;
+    padding-left: 10%;
 }
 
 .contents-input-group-description {
     height: 57%;
+    padding-left: 10%;
 }
 
 .modal-end-btn {

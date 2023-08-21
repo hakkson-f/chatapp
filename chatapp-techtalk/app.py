@@ -119,8 +119,8 @@ def userSignup():
 
     if name == '' or email == '' or password1 == '' or password2 == '':
         flash('空のフォームがあります') 
-    elif len(name) > 31:
-        flash('ユーザー名が長すぎます') 
+    elif len(name) > 21:
+        flash('ユーザー名が長すぎます。最大20文字までです。') 
     elif password1 != password2:
         flash('パスワードが一致しません')
     elif re.match(pattern, email) is None:
@@ -172,7 +172,7 @@ def add_channel():
     
     channel_name = request.form.get('channelTitle')
     channel = dbConnect.getChannelByName(channel_name)
-    if len(channel_name) > 31:
+    if len(channel_name) > 21:
         flash('チャンネル名が長すぎます') 
         return redirect('/')
     elif channel_name == '':
@@ -217,7 +217,7 @@ def updatechannel():
             flash('空のフォームがあります')
             channel = dbConnect.getChannelById(cid)
             return render_template('/update-channel.html', channel=channel)
-        elif len(newChannelName) > 31:
+        elif len(newChannelName) > 21:
             flash('チャンネル名が長すぎます') 
             channel = dbConnect.getChannelById(cid)
             return render_template('/update-channel.html', channel=channel)

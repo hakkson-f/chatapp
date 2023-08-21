@@ -15,7 +15,7 @@
 .layout-logo-container {
     position: absolute;
     z-index: 1;
-    top: 8%;
+    top: 4%;
     left: 15%;
     display: flex;
     align-items: center;
@@ -44,7 +44,7 @@
     transform: translate(-50%, -50%);
     z-index: 1;
     width: 75%;
-    height: 65%;
+    height: 75%;
 }
 
 .registration-title {

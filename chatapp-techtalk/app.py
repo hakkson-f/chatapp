@@ -130,9 +130,13 @@ def userSignup():
         password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
         user = User(uid, name, email, password)
         DBuser = dbConnect.getUser(email)
+        usernameDeplicate = dbConnect.getUserFromName(name)
 
         if DBuser != None:
             flash('既に登録されています')
+        elif usernameDeplicate != None:
+            flash('このユーザー名は既に使われています')
+      
         else:
             dbConnect.createUser(user)
             UserId = str(uid)
@@ -481,6 +485,7 @@ def test2():
         channels = cur.fetchall()
         
         return render_template('/test.html',test = channels)
+
 
 @app.route('/test-allclear')
 def deleteAllClear():

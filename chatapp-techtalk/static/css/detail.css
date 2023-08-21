@@ -233,6 +233,15 @@
     font-size: 1.2rem;
 }
 
+@media screen and (max-width:480px) {
+    .send-text {
+        font-size: 1.0rem;
+    }
+    .send-text::placeholder {
+        font-size: 0.9rem;
+    }   
+}
+
 .send-text:hover:-webkit-input-placeholder {
     color: #343c78;
 }

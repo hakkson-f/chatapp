@@ -215,6 +215,7 @@
     justify-content: center;
 }
 
+
 .send-text {
     height: 100%;
     width: 60%;
@@ -227,20 +228,18 @@
     border: none;
     outline: none;
     overflow-wrap:break-word;
+    margin-right: 5px;
+}
+
+.send-text:focus {
+    border: 2.5px solid #4A55A2;
+    margin-right: 2px;
 }
 
 .send-text::placeholder {
     font-size: 1.2rem;
 }
 
-@media screen and (max-width:480px) {
-    .send-text {
-        font-size: 1.0rem;
-    }
-    .send-text::placeholder {
-        font-size: 0.9rem;
-    }   
-}
 
 .send-text:hover:-webkit-input-placeholder {
     color: #343c78;
@@ -277,14 +276,13 @@
 .send-btn-box {
     width: 6%;
     height: 104%;
-    margin-left: 5px;
     border-radius: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.send-btn-box > button{
+.send-btn {
     height: 100%;
     width: 100%;
     min-width: 40px;
@@ -294,7 +292,23 @@
     background-color: #CFE8FF;
     border: none;
     cursor: pointer;
+    transition: background-color 0.2s linear;
 }
+
+.send-btn:hover {
+    background-color: #4A55A2;
+}
+
+.send-btn-icon {
+    font-size: 1.7rem;
+    color: #4A55A2;
+    transition: background-color 0.2s linear;
+}
+
+.send-btn:hover .send-btn-icon {
+    color: #CFE8FF;
+}
+
 
 .no-message{
     height: 30%;
@@ -302,10 +316,13 @@
     padding-top: 10%;
 }
 
-
-.send-btn-icon {
-    font-size: 1.7rem;
-    color: #4A55A2;
+@media screen and (max-width:480px) {
+    .send-text {
+        font-size: 1.0rem;
+    }
+    .send-text::placeholder {
+        font-size: 0.9rem;
+    }   
 }
 
 a {

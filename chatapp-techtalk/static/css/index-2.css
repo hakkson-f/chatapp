@@ -358,11 +358,87 @@
 .contents-input-group-name {
     height: 30%;
     padding-left: 10%;
+    border: none;
+    outline: none;
+}
+
+.contents-input-group-name:hover:-webkit-input-placeholder {
+    color: #343c78;
+}
+
+.contents-input-group-name:hover::-moz-placeholder {
+    color: #343c78;
+}
+
+.contents-input-group-name:hover::-ms-input-placeholder {
+    color: #343c78;
+}
+
+.contents-input-group-name:hover::placeholder {
+    color: #343c78;
+}
+
+.contents-input-group-name:focus:-webkit-input-placeholder {
+    color: transparent;
+}
+
+.contents-input-group-name:focus::-moz-placeholder {
+    color:transparent
+}
+
+.contents-input-group-name:focus::-ms-input-placeholder {
+    color: transparent;
+}
+
+.contents-input-group-name:focus::placeholder {
+    color: transparent;
+}
+
+.contents-input-group-name:focus {
+    border: 2.5px solid #4A55A2;
 }
 
 .contents-input-group-description {
     height: 57%;
     padding-left: 10%;
+    border: none;
+    outline: none;
+}
+
+.contents-input-group-description:hover:-webkit-input-placeholder {
+    color: #343c78;
+}
+
+.contents-input-group-description:hover::-moz-placeholder {
+    color: #343c78;
+}
+
+.contents-input-group-description:hover::-ms-input-placeholder {
+    color: #343c78;
+}
+
+.contents-input-group-description:hover::placeholder {
+    color: #343c78;
+}
+
+.contents-input-group-description:focus:-webkit-input-placeholder {
+    color: transparent;
+}
+
+.contents-input-group-description:focus::-moz-placeholder {
+    color:transparent
+}
+
+.contents-input-group-description:focus::-ms-input-placeholder {
+    color: transparent;
+}
+
+.contents-input-group-description:focus::placeholder {
+    color: transparent;
+}
+
+.contents-input-group-description:focus {
+    border: 2.5px solid #4A55A2;
 }
 
 .modal-end-btn {

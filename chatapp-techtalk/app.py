@@ -482,6 +482,30 @@ def test2():
         
         return render_template('/test.html',test = channels)
 
+@app.route('/test-allclear')
+def deleteAllClear():
+    conn = db.getConnection()
+    cur = conn.cursor()
+    sql = "DELETE FROM favorites;"
+    cur.execute(sql)
+    conn.commit()
+    cur.close()
+
+    conn = db.getConnection()
+    cur = conn.cursor()
+    sql = "DELETE FROM channels;"
+    cur.execute(sql)
+    conn.commit()
+    cur.close()
+
+    conn = db.getConnection()
+    cur = conn.cursor()
+    sql = "DELETE FROM users;"
+    cur.execute(sql)
+    conn.commit()
+    cur.close()
+
+
 
 @app.errorhandler(404)
 def show_error404(error):

@@ -9,7 +9,13 @@
     height: 100vh;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr 6fr 1fr;
-    background-color: #CFE8FF;
+    background: linear-gradient(
+
+    15deg,
+
+    #7baedd,
+    #ddedfc
+    );
 }
 
 .layout-logo-container {
@@ -28,7 +34,7 @@
 
 .logo-text {
     font-size: 2rem;
-    color: #343c78
+    color: #637aa6;
 }
 
 
@@ -79,7 +85,7 @@
 .registration-input-box > input  {
     width: 90%;
     height: 100%;
-    padding-left: 10%;
+    padding-left: 3%;
     font-size: 19px; 
     background-color: transparent;
     outline: none;
@@ -106,7 +112,7 @@
 .registration-input-box > input:focus ~ span,
 .registration-input-box > input:not(:placeholder-shown) ~ span
 {
-    color: #CFE8FF;
+    color: white;
     font-size: 0.75em;
     transform: translateY(-37px);
 }

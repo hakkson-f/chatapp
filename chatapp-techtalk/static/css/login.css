@@ -6,7 +6,13 @@
 .layout-container {
     width: 100vw;
     height: 100vh;
-    background-color: #CFE8FF;
+    background: linear-gradient(
+
+    15deg,
+
+    #7baedd,
+    #ddedfc
+    );
 }
 
 .layout-logo-container {
@@ -26,7 +32,7 @@
 
 .logo-text {
     font-size: 2rem;
-    color: #343c78
+    color: #637aa6;
 }
 
 .layout-contents-container{
@@ -78,7 +84,7 @@
 .registration-input-box > input  {
     width: 90%;
     height: 100%;
-    padding-left: 10%;
+    padding-left: 3%;
     font-size: 23px; 
     background-color: transparent;
     outline: none;
@@ -108,7 +114,7 @@
 .registration-input-box > input:focus ~ span,
 .registration-input-box > input:not(:placeholder-shown) ~ span
 {
-    color: #CFE8FF;
+    color: white;
     font-size: 0.75em;
     transform: translateY(-40px);
 }

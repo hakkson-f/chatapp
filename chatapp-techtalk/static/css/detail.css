@@ -218,6 +218,7 @@
 .send-text {
     height: 100%;
     width: 60%;
+    min-width: 200px;
     background-color: #f4f4f4;
     border-radius: 3px;
     font-size: 1.3rem;
@@ -230,6 +231,15 @@
 
 .send-text::placeholder {
     font-size: 1.2rem;
+}
+
+@media screen and (max-width:480px) {
+    .send-text {
+        font-size: 1.0rem;
+    }
+    .send-text::placeholder {
+        font-size: 0.9rem;
+    }   
 }
 
 .send-text:hover:-webkit-input-placeholder {

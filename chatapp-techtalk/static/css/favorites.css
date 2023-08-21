@@ -75,6 +75,12 @@
     padding-left: 10%;
 }
 
+@media screen and (max-width:480px) {
+    .list-channel-title {
+        font-size: 0.8rem;
+    }
+}
+
 .list-chanel-star-btn  {
     width: 20%;
     min-width: 65px;

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>チャンネル更新</title>
     <link href="../static/css/layout-2.css" rel="stylesheet">
-    <link href="../static/css/add-channel.css" rel="stylesheet">
+    <link href="../static/css/update-channel.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
@@ -44,17 +44,17 @@
             <div class="layout-contents-container">
                 <form class="contents-form" action="/update-channel" method="post" >
                     <div class="contents-input">
-                        <input class="contents-input-group-name"
+                        <textarea class="contents-input-group-name"
                         type="text"
                         placeholder="チャンネル名　例→　講義：python基礎２ 最大20文字"
                         name="channelTitle" 
                         autofocus
-                        />
-                        <input class="contents-input-group-description"
+                        ></textarea>
+                        <textarea class="contents-input-group-description"
                         type="text"
                         placeholder="チャンネルの説明　最大50文字"
                         name="channelDescription"
-                        />
+                        /></textarea>
                     </div>
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}

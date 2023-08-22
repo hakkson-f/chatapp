@@ -8,7 +8,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 52%;
+    width: 70%;
+    min-width: 250px;
     height: 66%;
     display: flex;
     flex-direction: column;
@@ -31,7 +32,19 @@
 }
 .contents-input > textarea::placeholder {
     color: gray;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+@media screen and (max-width:480px) {
+    .contents-input > textarea {
+        background-color: #f4f4f4;
+        border-color: #4A55A2;
+        font-size: 15px;
+    }
+    .contents-input > textarea::placeholder {
+        color: gray;
+        font-size: 15px;
+    }
 }
 
 .contents-input-group-name {

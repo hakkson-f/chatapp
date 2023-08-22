@@ -287,6 +287,7 @@
 
 .layout-modal-container {
     width: 60vw;
+    min-width: 300px;
     height: 60vh;
     border: none;
     outline: none;
@@ -464,11 +465,17 @@
 
 
 .modal-contents-text {
-    width: 80%;
+    width: 90%;
     height: 50%;
     font-size: 1.1rem;
     font-size: 1.5rem;
     color: rgb(225, 235, 245);
+}
+
+@media screen and (max-width:480px) {
+    .modal-contents-text {
+        font-size: 1.2rem;
+    }    
 }
 
 

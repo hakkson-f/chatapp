@@ -19,5 +19,7 @@ SQLAlchemy==1.4.41
 urllib3==1.26.12
 Werkzeug==2.2.2
 
+
+# メール通知用追加モジュール
 blinker==1.6.2
 Flask-Mail==0.9.1

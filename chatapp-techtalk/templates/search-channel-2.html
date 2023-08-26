@@ -115,46 +115,47 @@
                     <img class="background-animation-debug-img" src="../static/icon/debug-icon.png">
                 </div>
             </div>
-        <dialog class="layout-modal-container" id="layout-modal-add-container">
-            <div class="box-modal-container" id="box-modal-add-container">
-                <div class="modal-title-header">
-                    <h1 class="modal-title">チャンネル新規追加</h1>
-                    <button class="modal-close-btn" id="modal-add-close-btn">&times</button>
-                </div>
-                <form class="modal-contents-form" action="/add-channel" method="post" >
-                    <div class="modal-contents-input-wrapper">
-                        <input class="contents-input-group-name"
-                        type="text"
-                        placeholder="グループ名"
-                        name="channelTitle" 
-                        />
-                        <input class="contents-input-group-description"
-                        type="text"
-                        placeholder="グループの説明"
-                        name="channelDescription"
-                        />
+            <dialog class="layout-modal-container" id="layout-modal-add-container">
+                <div class="box-modal-container" id="box-modal-add-container">
+                    <div class="modal-title-header">
+                        <h1 class="modal-title">新規追加</h1>
+                        <button class="modal-close-btn" id="modal-add-close-btn">&times</button>
                     </div>
-                    <button class="contents-input-decision modal-end-btn">
-                        決定
-                    </button>
-                </form>          
-            </div>
-        </dialog>
-        <dialog class="layout-modal-container" id="layout-modal-delete-container">
-            <div class="box-modal-container">
-                <div class="modal-title-header">
-                    <h1 class="modal-title">チャンネル削除</h1>
-                    <button class="modal-close-btn" id="modal-delete-close-btn">&times</button>
+                    <form class="modal-contents-form" action="/add-channel" method="post" >
+                        <div class="modal-contents-input-wrapper">
+                            <textarea class="contents-input-group-name"
+                            type="text"
+                            placeholder="チャンネル名 &#13;例→ 講義：python基礎2 最大20文字"
+                            name="channelTitle" 
+                            ></textarea>
+                            <textarea class="contents-input-group-description"
+                            type="text"
+                            placeholder="チャンネルの説明 &#13;最大50文字"
+                            name="channelDescription"
+                            ></textarea>
+                        </div>
+                        <button class="contents-input-decision modal-end-btn">
+                            決定
+                        </button>
+                    </form>          
                 </div>
-                <form class="modal-contents-form" action="/delete-channel" method="post" >
-                    <div class="modal-contents-text">
-                        <p>削除ボタンを押すとチャンネルが消えます</p>
-                        <p>本当によろしいですか？</p>
+            </dialog>
+            <dialog class="layout-modal-container" id="layout-modal-delete-container">
+                <div class="box-modal-container">
+                    <div class="modal-title-header">
+                        <h1 class="modal-title">削除</h1>
+                        <button class="modal-close-btn" id="modal-delete-close-btn">&times</button>
                     </div>
-                    <button class="delete-channel-confirmation-button modal-end-btn">削除</button>
-                </form>
-            </div>
-        </dialog>  
+                    <form class="modal-contents-form" action="/delete-channel" method="post" >
+                        <div class="modal-contents-text">
+                            <p>削除ボタンを押すとチャンネルが消えます。</p>
+                            <p>本当によろしいですか？</p>
+                        </div>
+                        <input type="hidden" value="" name="cid" id="delete-channel-btn">
+                        <button class="delete-channel-confirmation-button modal-end-btn">削除</button>
+                    </form>
+                </div>
+            </dialog>  
         <script src="../static/javascript/index-2.js"></script> 
     </body>
 </html>

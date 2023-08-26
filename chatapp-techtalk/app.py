@@ -10,10 +10,7 @@ import re
 #ログインメール通知設定
 from flask_mail import Mail, Message
 
-# ↓test用。最終発表版では削除
-import pymysql
-from db import db
-# ↑ここまで
+
 
 
 app = Flask(__name__)
@@ -458,59 +455,6 @@ def profileother():
         user = dbConnect.getUsernameOther(uid)
     
     return render_template('/profile-other-2.html', user=user)
-
-
-@app.route('/test')
-def test():
-        test = ""
-        cur = None
-        conn = db.getConnection()
-        cur = conn.cursor()
-        sql = "SELECT * FROM users;"
-        cur.execute(sql)
-        channels = cur.fetchall()
-        for i in range(len(channels)):
-            test = test + ',' + str(channels[i]['email'])
-        
-        return render_template('/test.html',test = test)
-
-@app.route('/test2')
-def test2():
-        
-        cur = None
-        conn = db.getConnection()
-        cur = conn.cursor()
-        sql = "SELECT * FROM users;"
-        cur.execute(sql)
-        channels = cur.fetchall()
-        
-        return render_template('/test.html',test = channels)
-
-
-@app.route('/test-allclear')
-def deleteAllClear():
-    conn = db.getConnection()
-    cur = conn.cursor()
-    sql = "DELETE FROM favorites;"
-    cur.execute(sql)
-    conn.commit()
-    cur.close()
-
-    conn = db.getConnection()
-    cur = conn.cursor()
-    sql = "DELETE FROM channels;"
-    cur.execute(sql)
-    conn.commit()
-    cur.close()
-
-    conn = db.getConnection()
-    cur = conn.cursor()
-    sql = "DELETE FROM users;"
-    cur.execute(sql)
-    conn.commit()
-    cur.close()
-
-    return redirect('/login')
 
 
 

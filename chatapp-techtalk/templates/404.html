@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ページが見つかりませんでした</title>
+  <link href="../static/css/layout-2.css" rel="stylesheet">
+  <link href="{{ url_for('static',filename='../static/css/error.css') }}" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="layout-container">
+    <div class="layout-header-container">
+      <div class="error-num">
+        <span>404エラー</span>
+      </div>
+    </div>
+    <div class="layout-sidebar-container">
+      <div class="block-sidebar-icon">
+        <a href="/">
+          <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
+        </a>
+        <div class="side-bar-middle-buttons">
+            <a href="/profile">
+                <img class="sidebar-icon-profile icon sidebar-icon-clickable" src="../static/icon/user_icon.png">
+            </a>
+            <a href="/" style="display: inline-block">
+                <img class="sidebar-icon-search icon sidebar-icon-clickable" src="../static/icon/search_icon.png">
+            </a>
+            <a href="/favorites">
+                <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
+            </a> 
+        </div>
+        <a href="/logout" style="display: inline-block">
+            <img class="sidebar-icon-logout icon sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+        </a>
+        
+      </div>
+    </div>
+    <div class="layout-contents-container">
+      <div class="error-message">
+        <p>お探しのページが見つかりません</p>
+        <p>ページ先が削除、移動された可能性があります</p>
+        <p>↓のボタンからチャンネル名一覧のページに戻れます</p>
+          <button class="error-button">
+            <a href="{{ url_for('index') }}">戻る</a>
+          </button>
+      </div>
+      
+    </div>
+</body>
+</html>

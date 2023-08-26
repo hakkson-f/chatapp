@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録</title>
+    <link href="../static/css/layout.css" rel="stylesheet">
+    <link rel="icon" href="../static/icon/favicon-rogo.svg" type="image/svg+xml">
+    <link href="../static/css/signup-2.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="layout-container">
+      <div class="layout-logo-container">
+        <img class="logo-icon" src='../static/icon/rogo-first-icon.png'>
+        <div class="logo-text">Tech Talk</div>
+      </div>
+      <div class="layout-contents-container">
+        <div class="registration-title">
+          <h2>新規登録</h2>
+        </div>
+        <form class="registration-form" method="post" action="">
+          <div class="registration-input">
+            <div class="registration-input-box">
+              <input class="registration-input-form input-username"
+                type="text"
+                name="username"
+                id="username-input"
+                placeholder=" "
+                autofocus
+              />
+              <span>ユーザー名</span>
+              <i></i>
+            </div>
+            <div class="registration-input-box">
+              <input class="registration-input-form input-passward"
+                type="text"
+                name="email"
+                id="password-input"
+                placeholder=" "
+              />
+              <span>メールアドレス</span>
+              <i></i>
+            </div>
+            <div class="registration-input-box">
+              <input class="registration-input-form input-passward"
+                type="password"
+                name="password1"
+                id="password-input"
+                placeholder=" "
+              />
+              <span>パスワード</span>
+              <i></i>
+            </div>
+            <div class="registration-input-box">
+              <input class="registration-input-form input-passward"
+                type="password"
+                name="password2"
+                id="password-input"
+                placeholder=" "
+              />
+              <span>パスワード（再入力）</span>
+              <i></i>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li class="flash-message">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+
+            <div class="registration-pagechange">
+              <button class="registration-button-signup">登録する</button>
+              <a class="registration-link switch-login-page" href="{{ url_for('login') }}">ログインに戻る</a>
+            </div>
+          </div>
+        </form>
+        
+      </div>
+      <div class="background-animation-setting-container">
+        <img class="background-animation-setting-img" src="../static/icon/setting-icon.png">
+      </div>
+      <div class="background-animation-wrench-container">
+          <img class="background-animation-wrench-img" src="../static/icon/wrench_icon.png">
+      </div>
+      <div class="background-animation-robot-container">
+          <img class="background-animation-robot-img" src="../static/icon/robot_icon.png">
+      </div>
+      <div class="background-animation-debug-container">
+          <img class="background-animation-debug-img" src="../static/icon/debug-icon.png">
+      </div>
+    </div>
+  </body>
+</html>

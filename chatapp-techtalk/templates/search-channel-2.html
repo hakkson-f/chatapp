@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>チャンネル一覧</title>
+        <link rel="icon" href="../static/icon/favicon-rogo.svg" type="image/svg+xml">
+        <link href="../static/css/layout-2.css" rel="stylesheet">
+        <link href="../static/css/index-2.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/50bd2dd3b6.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="layout-container">
+            <div class="layout-header-container">
+                <div class="header-box">
+                    <h1 class="header-title">
+                        チャンネル検索結果
+                    </h1>
+                </div>
+            </div>
+            <div class="layout-sidebar-container">
+                <div class="block-sidebar-icon">
+                    <a href="/">
+                        <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
+                    </a>
+                    <div class="side-bar-middle-buttons">
+                        <a href="/profile">
+                            <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
+                        </a>
+                        <a href="/">
+                            <img class="sidebar-icon-search  sidebar-icon-clickable" src="../static/icon/search_icon.png">
+                        </a>
+                        <a href="/favorites">
+                            <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
+                        </a>                                  
+                    </div>
+                    <a href="/logout">
+                        <img class="sidebar-icon-logout sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+                    </a>
+                </div>
+            </div>
+            <div class="layout-center-container">
+                <div class="layout-contents-container">
+                    <div class="block-contets-container">
+                        <div class="add-channels-box">
+                            <button class="add-channels-btn">
+                                <i class="fa-solid fa-plus add-channels-btn-icon"></i>
+                                <a class="add-channels-btn-text">チャンネル新規追加</a>
+                            </button>
+                        </div>
+                        <form class="search-channels-form" method="post" action="/search-channels">
+                            <input type="text" class="channels-form-input" name="search-channels" id="search-channels" placeholder="　チャンネル検索">
+                            <button type="submit" class="channel-form-searchbtn">
+                                <i class="fa-solid fa-magnifying-glass search-channels-btn-icon"></i>
+                            </button>
+                        </form>
+                        <div class="channels-list-box">
+                            <ul class="channnel-list-wrapper">
+                                {% if channels|length == 0 %}
+                                <h3>該当のチャンネルはありません</h3>
+
+                                {% else %}
+                                {% for channel in channels %}
+                                <li class="channel-list">
+                                    
+                                    <a href="/detail/{{ channel.id }}" class="list-channel-title">{{ channel.name }}</a>
+                                    
+                                    {% if channel.favorite_id == None %}
+                                    <form action="/favorites_channel" method="post" class="delete-channel">
+                                        <input type="hidden" value="{{ channel.id }}" name="cid">
+                                        <!-- <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.id }}">お気に入り登録 -->
+                                            <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
+                                        <!-- </button> -->
+                                        <button class="list-chanel-favorite-not-btn list-chanel-star-btn">
+                                            <i class="fa-regular fa-star list-chanel-favorite-not-icon list-chanel-star-icon" name="channel-id" value="{{ channel.id }}"></i>
+                                        </button>
+                                    </form>
+                                    {% else %}
+                                    <form action="/delete_favoritechannel-index" method="post" class="delete-channel">
+                                        <input type="hidden" value="{{ channel.favorite_id}}" name="cid">
+                                        <button name="channel-id" value="{{ channel.favorite_id }}" class="list-chanel-favorite-not-btn list-chanel-star-btn">
+                                            <i class="fa-solid fa-star list-chanel-favorite-icon list-chanel-star-icon"></i>
+                                        </button>
+                                    </form>
+                                    {% endif %}
+                                    {% if uid == channel.uid %}
+                                    <form action="/delete_channel" method="post" class="delete-channel">
+                                        <input type="hidden" value="{{ channel.id}}" name="cid">
+                                        <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.id }}" class="list-delete-channel-btn">
+                                            <i class="fa-solid fa-trash-can list-chanel-delite-icon"></i>
+                                        </button>
+                                    </form>
+                                    {% endif %}
+                                    
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="background-animation-setting-container">
+                    <img class="background-animation-setting-img" src="../static/icon/setting-icon.png">
+                </div>
+                <div class="background-animation-wrench-container">
+                    <img class="background-animation-wrench-img" src="../static/icon/wrench_icon.png">
+                </div>
+                <div class="background-animation-robot-container">
+                    <img class="background-animation-robot-img" src="../static/icon/robot_icon.png">
+                </div>
+                <div class="background-animation-debug-container">
+                    <img class="background-animation-debug-img" src="../static/icon/debug-icon.png">
+                </div>
+            </div>
+        <dialog class="layout-modal-container" id="layout-modal-add-container">
+            <div class="box-modal-container" id="box-modal-add-container">
+                <div class="modal-title-header">
+                    <h1 class="modal-title">チャンネル新規追加</h1>
+                    <button class="modal-close-btn" id="modal-add-close-btn">&times</button>
+                </div>
+                <form class="modal-contents-form" action="/add-channel" method="post" >
+                    <div class="modal-contents-input-wrapper">
+                        <input class="contents-input-group-name"
+                        type="text"
+                        placeholder="グループ名"
+                        name="channelTitle" 
+                        />
+                        <input class="contents-input-group-description"
+                        type="text"
+                        placeholder="グループの説明"
+                        name="channelDescription"
+                        />
+                    </div>
+                    <button class="contents-input-decision modal-end-btn">
+                        決定
+                    </button>
+                </form>          
+            </div>
+        </dialog>
+        <dialog class="layout-modal-container" id="layout-modal-delete-container">
+            <div class="box-modal-container">
+                <div class="modal-title-header">
+                    <h1 class="modal-title">チャンネル削除</h1>
+                    <button class="modal-close-btn" id="modal-delete-close-btn">&times</button>
+                </div>
+                <form class="modal-contents-form" action="/delete-channel" method="post" >
+                    <div class="modal-contents-text">
+                        <p>削除ボタンを押すとチャンネルが消えます</p>
+                        <p>本当によろしいですか？</p>
+                    </div>
+                    <button class="delete-channel-confirmation-button modal-end-btn">削除</button>
+                </form>
+            </div>
+        </dialog>  
+        <script src="../static/javascript/index-2.js"></script> 
+    </body>
+</html>

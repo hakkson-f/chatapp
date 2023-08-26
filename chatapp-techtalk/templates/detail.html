@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チャットページ</title>
+    <link href="../static/css/layout-2.css" rel="stylesheet">
+    <link href="../static/css/detail.css" rel="stylesheet">
+    <link rel="icon" href="../static/icon/favicon-rogo.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/50bd2dd3b6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="layout-container">
+        <div class="layout-header-container">
+            <h1 class="header-title">
+                {{ channel.name }}
+            </h1>
+            {% if channel.abstract is not none %}
+                <div id="channel-description">{{ channel.abstract }}</div>
+            {% endif %}
+            {% if uid == channel.uid %}
+                <form action="/update-channel/{{ channel.id }}" class="update-channel-box">
+                    <input type="hidden" value="{{ channel.id }}" name="cid">
+                    <button type="image" id="update-channel-btn"  class="update-channel-btn" name="channel-id" value="{{ channel.id }}">編集
+                        <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
+                    </button>
+                </form>
+
+            {% endif %}
+        </div>
+        <div class="layout-sidebar-container">
+            <div class="block-sidebar-icon">
+                <a href="/">
+                    <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
+                </a>
+                <div class="side-bar-middle-buttons">
+                    <a href="/profile">
+                        <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
+                    </a>
+                    <a href="/">
+                        <img class="sidebar-icon-search  sidebar-icon-clickable" src="../static/icon/search_icon.png">
+                    </a>
+                    <a href="/favorites">
+                        <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
+                    </a>                                  
+                </div>
+                <a href="/logout">
+                    <img class="sidebar-icon-logout sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+                </a>
+            </div>
+        </div>
+        <div class="layout-secondsidebar-container">
+            <div class="box-secondsidebar">
+                <ul class="channnel-list-wrapper">
+                                
+                    {% if favorites|length == 0 %}
+                    <h5 class="channel-list">お気に入りチャンネルはまだありません</h5>
+        
+                    {% else %}
+                    {% for favorite in favorites %}
+                    <li class="channel-list">
+                        <a href="/detail/{{ favorite.id }}" class="list-channel-title">{{ favorite.name }}</a>
+                        
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        
+            <div class="layout-contents-container" id="layout-contents-container">
+            
+                <!-- <div class="search-messages">
+                    <label for="search-messages">本文検索</label>
+                    <input type="text" id="search-messages">
+                    <button type="button">検索</button>
+                </div> -->
+
+                {% if messages|length > 0 %} {% for message in messages %} {% if message.uid == uid %} 
+                <p class="user-name message-right">＠{{ message.user_name }}</p>     
+                <div class="message-module my-message">
+                    <div class="message-box">
+                        <div class="message-content">
+                            <div class="message-text my-text" >
+                                {{ message.message }}
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <p class="message-created_at message-right">{{ message.created_at }}</p>
+                <form action="/delete_message" method="post" class="delete-message">
+                    <input type="hidden" value="{{ channel.id}}" name="cid">
+                    <button type="image" id="delete-message-button" name="message-id" value="{{ message.id }}">削除
+                        <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
+                    </button>
+
+                </form>
+                {% else %}
+                <p class="user-name message-left">＠{{ message.user_name }}</p>
+                <div class="message-module message-left others-message">
+                    <div class="message-box">
+                        <div class="message-content">
+                            <p class="message-text others-text">
+                                {{ message.message }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="message-created_at message-left">{{ message.created_at }}</p>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <div class="no-message">
+                    <p>まだメッセージがありません</p>
+                </div>
+                {% endif %}
+
+                <!-- <div class="background-animation-setting-container">
+                    <img class="background-animation-setting-img" src="../static/icon/setting-icon.png">
+                </div>
+                <div class="background-animation-wrench-container">
+                    <img class="background-animation-wrench-img" src="../static/icon/wrench_icon.png">
+                </div>
+                <div class="background-animation-robot-container">
+                    <img class="background-animation-robot-img" src="../static/icon/robot_icon.png">
+                </div>
+                <div class="background-animation-debug-container">
+                    <img class="background-animation-debug-img" src="../static/icon/debug-icon.png">
+                </div> -->
+
+            </div>
+        
+        <div class="layout-send-container">
+            <div class="block-send-contaner">
+                <form
+                    class="send-box"
+                    action="/message"
+                    method="post"
+                    name="newMessageForm"
+                    onsubmit="AutoLink()"
+                >
+                    <textarea name="message" class="send-text" placeholder="メッセージ入力欄(URL入力の際は、直後にスペースを入れる)" id="message" cols="50"></textarea>
+                    <input type="hidden" name="cid" value="{{ channel.id }}" />
+                    <div class="send-btn-box">
+                        <button type="image" id="add-message-button" class="send-btn" onclick="AutoLink()">
+                            <i class="fa-solid fa-paper-plane send-btn-icon"></i>
+                        </button>
+                    </div>
+                    <textarea type="text" id="url-message" name="url-message"></textarea>                  
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function AutoLink() {
+        var str = document.getElementById('message').value
+        if( str.match(/((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/)){
+            var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;正規表現（/〜/）を解釈してくれないエディタ等で自動整形を崩さないため。
+            var regexp_makeLink = function(all, url, h, href) {
+                return '<a href="h' + href + '" target="_blank"><br> ' + url + '<br><img src="http://capture.heartrails.com/400x300/border?' + url + '" width="70%" /></a><br>';
+                }
+            var textWithLink = str.replace(regexp_url, regexp_makeLink);
+            document.getElementById('url-message').innerHTML = textWithLink;
+
+        }else{
+            var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;正規表現（/〜/）を解釈してくれないエディタ等で自動整形を崩さないため。
+            var regexp_makeLink = function(all, url, h, href) {
+                return '<a href="h' + href + '" target="_blank">' + url + '</a>';
+                }
+            var textWithLink = str.replace(regexp_url, regexp_makeLink);
+            document.getElementById('url-message').innerHTML = textWithLink;
+            }
+        }
+    </script>
+    <script>
+        var arr = document.getElementsByClassName('my-text');
+        
+        for(var i = 0; i < arr.length; i++){
+            <!-- console.log(arr[i].innerText); -->
+            arr[i].innerHTML = arr[i].innerText;
+            }
+    </script>
+    <script>
+        var arr = document.getElementsByClassName('others-text');
+        
+        for(var i = 0; i < arr.length; i++){
+            <!-- console.log(arr[i].innerText); -->
+            arr[i].innerHTML = arr[i].innerText;
+            }
+    </script>
+    <script>
+        // 各チャンネル詳細ページ内、ページ読み込み時に自動で下までスクロールする
+        window.onload = function() {
+        var target = document.getElementById('layout-contents-container');
+        target.scrollTop=target.scrollHeight;
+        }
+    </script>
+</body>
+</html>

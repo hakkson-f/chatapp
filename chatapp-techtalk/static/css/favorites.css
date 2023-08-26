@@ -1,0 +1,106 @@
+.layout-contents-container {
+    top: 45%;
+}
+
+.block-contets-container {
+    height: 90%;
+    width: 80%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.user-name-label{
+    font-size: 1.6rem;
+    margin-left: 5%;
+}
+
+.channels-list-box {
+    width: 60%;
+    min-width: 200px;
+    height: 73%;
+    text-align: center;
+}
+
+
+.channnel-list-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.channnel-list-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.channel-list {
+    width: 100%;
+    height: 15%;
+    position: relative; 
+    list-style: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: #f4f4f4;
+}
+
+.channel-list:hover {
+    background: #bccae3;
+    cursor: pointer;
+}
+
+.list-chanel-icon {
+    position: absolute;
+    top: 50%;
+    left: 4%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #4A55A2;
+}
+
+.list-channel-title {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #4A55A2;
+    font-size: 1.1rem;
+    width: 55%;
+    text-align: left;
+    padding-left: 10%;
+}
+
+@media screen and (max-width:480px) {
+    .list-channel-title {
+        font-size: 0.8rem;
+    }
+}
+
+.list-chanel-star-btn  {
+    width: 20%;
+    min-width: 65px;
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    right: 13.6%;
+    transform: translateY(-45%);
+    border-radius: 5px;
+    background: linear-gradient(
+
+    15deg,
+
+    #7baedd,
+    #ddedfc
+    );
+    transition: background .2s linear;
+    cursor: pointer;
+}
+
+.no-channel{
+    color: #f4f4f4;
+}

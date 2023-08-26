@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アカウント一覧</title>
+    <link href="../static/css/layout.css" rel="stylesheet">
+    <link href="../static/css/profile-other.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="layout-container">
+        <div class="layout-header-container">
+            <h1 class="header-title">アカウント一覧</h1>
+        </div>
+        <div class="layout-sidebar-container">
+            <div class="block-sidebar-icon">
+                <img class="side-bar-rogo" src="../static/icon/key_icon.png">
+                <div class="side-bar-middle-buttons">
+                    <a href="/profile">
+                        <img class="sidebar-icon-profile icon sidebar-icon-clickable" src="../static/icon/user_icon.png">
+                    </a>
+                    <a href="/" style="display: inline-block">
+                        <img class="sidebar-icon-search icon sidebar-icon-clickable" src="../static/icon/search_icon.png">
+                    </a>
+                    <a href="/">
+                        <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
+                    </a>                                      
+                </div>
+                <a href="/logout" style="display: inline-block">
+                    <img class="sidebar-icon-logout icon sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+                </a>
+            </div>
+        </div>
+        <div class="layout-contents-container">
+            <div class="block-contents-profile">
+                <div class="contents-profile-username">
+                    <div class="contents-profile-label-username profile-label">その他 ユーザー名一覧
+                    </div>
+                    
+                    <div class="user-list">
+                    {% for user in user %}
+                    <div class="contents-profile-text-username profile-text">{{ user.user_name }}</div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

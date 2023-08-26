@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チャンネルを追加</title>
+    <link href="../static/css/layout.css" rel="stylesheet">
+    <link href="../static/css/add-channel.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layout-container">
+        <div class="layout-header-container">
+            <h1 class="header-title">
+                チャンネルを追加
+            </h1>
+        </div>
+        <div class="layout-sidebar-container">
+            <div class="block-sidebar-icon">
+                <img class="side-bar-rogo" src="../static/icon/key_icon.png">
+                <div class="side-bar-middle-buttons">
+                    <a href="/profile">
+                        <img class="sidebar-icon-profile icon sidebar-icon-clickable" src="../static/icon/user_icon.png">
+                    </a>
+                    <a href="/" style="display: inline-block">
+                        <img class="sidebar-icon-search icon sidebar-icon-clickable" src="../static/icon/search_icon.png">
+                    </a>
+                    <!-- <a href="">
+                        <img class="sidebar-icon-plus" src="../static/icon/plus_icon.png">
+                    </a>                                      -->
+                </div>
+                <a href="/logout" style="display: inline-block">
+                    <img class="sidebar-icon-logout icon sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+                </a>
+            </div>
+        </div>
+        <div class="layout-contents-container">
+            <form class="contents-form" action="/add-channel" method="post" >
+                <div class="contents-input">
+                    <input class="contents-input-group-name"
+                    type="text"
+                    placeholder="グループ名"
+                    name="channelTitle" 
+                    autofocus
+                    />
+                    <input class="contents-input-group-description"
+                    type="text"
+                    placeholder="グループの説明"
+                    name="channelDescription"
+                    />
+                </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li class="flash-message">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
+                <a href="">
+                <button class="contents-input-decision">決定</button>
+                </a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

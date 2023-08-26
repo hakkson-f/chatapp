@@ -1,0 +1,344 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+ul >li{
+    list-style: none;
+}
+
+.flash-message{
+    color: rgba(246, 0, 0, 0.594);
+    font-size: large;
+    font-weight: bold;
+}
+
+.layout-container {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    grid-template-columns: 0.33fr 0.67fr 4fr 1fr;
+    grid-template-rows: 0.6fr 0.4fr 3fr 1fr;
+}
+
+@media screen and (max-width:480px) {
+    .layout-container {
+        grid-template-columns: 0.33fr 0.67fr 4fr 1fr;
+        grid-template-rows: 0.5fr 0.4fr 3fr 0.6fr 0.5fr;
+    }
+}
+
+.layout-header-container {
+    grid-column: 2 / 5;
+    grid-row: 1;
+    position: relative;
+}
+
+
+.header-box {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        
+        to right,
+
+        #5d7196,
+        #819bcb
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    z-index: 5;
+}
+
+.header-title {
+    font-size: 41.2px;
+    margin-left: 32px;
+    color: white;
+    text-shadow: -0.15em 0.12em 0.05em rgba(74, 85, 162, 0.8);
+}
+
+
+.layout-sidebar-container {
+    grid-column: 1;
+    grid-row: 1 / 5;
+    background: linear-gradient(
+        #596095,
+        #31396e
+    );
+    position: relative;
+    z-index: 10;
+}
+
+.block-sidebar-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68%;
+    height: 94%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.side-bar-middle-buttons {
+    width: 100%;
+    height: 70%;
+}
+
+.side-bar-middle-buttons  img {
+    width: 100%;
+    margin-bottom: 27.5px;
+}
+
+.side-bar-rogo{
+    width: 100%;
+}
+
+.sidebar-icon-logout {
+    width: 100%;
+}
+
+
+
+@keyframes bounce {
+    0% {
+        transform: translate(0%, 0%);
+    }
+    
+    30% {
+        transform: translate(0%, -15%);
+    }
+    50% {
+        transform: translate(0%, 0%);
+    }
+    60% {
+        transform: translate(0%, -5%);
+    }
+    100% {
+        transform: translate(0%, 0%);
+    }
+}
+
+.sidebar-icon-clickable:hover {
+    cursor: pointer;
+    animation: bounce 0.76s linear 0s infinite normal;
+}
+
+.layout-center-container {
+    grid-column: 2 / 5;
+    grid-row: 2 / 5;
+    background: linear-gradient(
+
+    15deg,
+
+    #7baedd,
+    #ddedfc
+    );
+    position: relative;
+}
+
+.background-animation-setting-container {
+    overflow: hidden;
+    position:absolute;
+    left: 2%;
+	width: 15%;
+    top: 0%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.background-animation-setting-img {
+    width: 100%;
+    height: auto;
+    animation:transform-setting 34s ease-out infinite;
+}
+
+@keyframes transform-setting {
+    from {
+		transform:translateY(-100vh) rotate(0deg);
+    }
+    to {
+        transform:translateY(100vh) rotate(360deg);
+    }
+}
+
+.background-animation-wrench-container {
+    overflow: hidden;
+    position: absolute;
+    left: 84%;
+    width: 15%;
+    top: 0%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+    text-align: center;
+}
+
+.background-animation-wrench-img {
+    width: 50%;
+    height: auto;
+    animation: transform-wrench 30s ease-out infinite;
+}
+
+@keyframes transform-wrench {
+    from {
+		transform:translateY(-300vh) rotate(0deg);
+    }
+    to {
+        transform:translateY(100vh) rotate(1000deg);
+    }
+}
+
+.background-animation-robot-container {
+    overflow: hidden;
+    position: absolute;
+    left: 60%;
+    width: 28%;
+    top: 0%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+    text-align: center;
+}
+
+.background-animation-robot-img {
+    width: 50%;
+    height: auto;
+    animation: transform-robot 48s ease-out infinite;
+}
+
+@keyframes transform-robot {
+    from {
+		transform:translateY(-100vh) rotate(0deg);
+    }
+    to {
+        transform:translateY(100vh) rotate(360deg);
+    }
+}
+
+.background-animation-debug-container {
+    overflow: hidden;
+    position: absolute;
+    left: 15%;
+    width: 28%;
+    top: 0%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+    text-align: center;
+}
+
+.background-animation-debug-img {
+    width: 70%;
+    height: auto;
+    animation: transform-debug 60s ease-out infinite;
+}
+
+@keyframes transform-debug {
+    from {
+		transform:translateY(-30vh) rotate(0deg);
+    }
+    to {
+        transform:translateY(100vh) rotate(180deg);
+    }
+}
+
+.layout-contents-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 80%;
+    height: 70%;
+    background: linear-gradient(
+
+        15deg,
+
+        #5c74a0,
+        #899ec4
+
+    );
+    border-radius: 5px;
+    box-shadow: -10px 13px 6px rgba(74, 85, 162, 0.2);
+    position: relative;
+}
+
+
+@media screen and (max-width:480px) {
+    .layout-header-container {
+        grid-column: 1 / 5;
+        grid-row: 1;
+        position: relative;
+    }
+
+    .header-title {
+        font-size: 25px;
+        margin-left: 20px;
+    }
+
+    .layout-sidebar-container {
+        grid-column: 1 / 5;
+        grid-row: 5;
+        background: linear-gradient(
+            #596095,
+            #31396e
+        );
+        position: relative;
+        z-index: 10;
+        
+    }
+    .layout-center-container {
+        grid-column: 1 / 5;
+        grid-row: 2 / 5;
+        background: linear-gradient(
+    
+        15deg,
+    
+        #7baedd,
+        #ddedfc
+        );
+        position: relative;
+    }
+    
+    
+    .block-sidebar-icon {
+        width: 90dvw;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .side-bar-middle-buttons{
+        width: 160px;
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+
+    .block-sidebar-icon >a >img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .side-bar-middle-buttons >a >img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .side-bar-middle-buttons  img {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+}

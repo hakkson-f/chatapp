@@ -1,0 +1,75 @@
+.icon{
+    width: 100%;
+}
+
+
+.contents-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    min-width: 250px;
+    height: 66%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contents-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60%;
+    width: 100%;
+}
+
+.contents-input > textarea {
+    background-color: #f4f4f4;
+    border-color: #4A55A2;
+    font-size: 20px;
+}
+.contents-input > textarea::placeholder {
+    color: gray;
+    font-size: 18px;
+}
+
+@media screen and (max-width:480px) {
+    .contents-input > textarea {
+        background-color: #f4f4f4;
+        border-color: #4A55A2;
+        font-size: 15px;
+    }
+    .contents-input > textarea::placeholder {
+        color: gray;
+        font-size: 15px;
+    }
+}
+
+.contents-input-group-name {
+    height: 30%;
+}
+
+
+.contents-input-group-description {
+    height: 48%;
+}
+
+
+.contents-input-decision {
+    width: 56%;
+    height: 80%;
+    background-color: #CFE8FF;
+    border-color: #CFE8FF;
+    border-radius: 5px;
+    color: #4A55A2;
+    font-size: 23px;
+}
+
+.contents-form >a{
+    display: block;
+    width: 100%;
+    height: 32%;
+    text-align: center;
+}

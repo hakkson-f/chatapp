@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>お気に入り</title>
+        <link rel="icon" href="../static/icon/favicon-rogo.svg" type="image/svg+xml">
+        <link href="../static/css/layout-2.css" rel="stylesheet">
+        <link href="../static/css/favorites.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/50bd2dd3b6.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="layout-container">
+            <div class="layout-header-container">
+                <div class="header-box">
+                    <h1 class="header-title">
+                        お気に入りチャンネル
+                    </h1>
+                </div>
+            </div>
+            <div class="layout-sidebar-container">
+                <div class="block-sidebar-icon">
+                    <a href="/">
+                        <img class="side-bar-rogo" src="../static/icon/rogo-icon.png">
+                    </a>
+                    <div class="side-bar-middle-buttons">
+                        <a href="/profile">
+                            <img class="sidebar-icon-profile sidebar-icon-clickable" src="../static/icon/user_icon.png">
+                        </a>
+                        <a href="/">
+                            <img class="sidebar-icon-search  sidebar-icon-clickable" src="../static/icon/search_icon.png">
+                        </a>
+                        <a href="/favorites">
+                            <img class="sidebar-icon-favorite sidebar-icon-clickable" src="../static/icon/favorite_icon.png">
+                        </a>                                  
+                    </div>
+                    <a href="/logout">
+                        <img class="sidebar-icon-logout sidebar-icon-clickable" src="../static/icon/logout_icon.png">
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="layout-center-container">
+                <div class="user-name-label">
+                    {{ username }} さんのお気に入り
+                    
+                </div>
+                <div class="layout-contents-container">
+                    <div class="block-contets-container">
+
+                        <div class="channels-list-box">
+                            <ul class="channnel-list-wrapper">
+                                
+                                {% if channels|length == 0 %}
+                                <h2 class="no-channel">お気に入りチャンネルはまだありません</h2>
+                    
+                                {% else %}
+                                {% for channel in channels %}
+                                <li class="channel-list">
+                                    <a href="/detail/{{ channel.id }}" class="list-channel-title">{{ channel.name }}</a>
+                                    
+                                    <form action="/delete_favoritechannel" method="post" class="delete-channel">
+                                        <input type="hidden" value="{{ channel.favorite_id}}" name="cid">
+                                        <button type="image" id="delete-channel-button" name="channel-id" value="{{ channel.favorite_id }}" class="list-chanel-favorite-not-btn list-chanel-star-btn">登録解除
+                                            <!-- <img class="send-btn-icon" src="../static/icon/key_icon.png"> -->
+                                        </button>
+                                    </form>    
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="background-animation-setting-container">
+                    <img class="background-animation-setting-img" src="../static/icon/setting-icon.png">
+                </div>
+                <div class="background-animation-wrench-container">
+                    <img class="background-animation-wrench-img" src="../static/icon/wrench_icon.png">
+                </div>
+                <div class="background-animation-robot-container">
+                    <img class="background-animation-robot-img" src="../static/icon/robot_icon.png">
+                </div>
+                <div class="background-animation-debug-container">
+                    <img class="background-animation-debug-img" src="../static/icon/debug-icon.png">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
